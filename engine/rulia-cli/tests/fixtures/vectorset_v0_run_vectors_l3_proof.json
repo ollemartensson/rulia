@@ -1,0 +1,93 @@
+{
+  "schema_version": "portable_workflow.vectorset.v0",
+  "format_id": "portable_workflow.vectorset.v0",
+  "vectorset_id": "portable-workflow-v0-l3-proof",
+  "vectors": [
+    {
+      "id": "V0-301",
+      "levels": ["L3"],
+      "inputs": {
+        "request": {
+          "path": "l3_proof_v0/request.rulia.bin"
+        },
+        "receipt": {
+          "path": "l3_proof_v0/receipt.valid.rulia.bin"
+        },
+        "trust": {
+          "path": "l3_proof_v0/trust/trusted"
+        }
+      },
+      "expected": {
+        "verdict": "pass",
+        "failure_codes": []
+      }
+    },
+    {
+      "id": "V0-302",
+      "levels": ["L3"],
+      "inputs": {
+        "request": {
+          "path": "l3_proof_v0/request.rulia.bin"
+        },
+        "receipt": {
+          "path": "l3_proof_v0/receipt.valid.rulia.bin"
+        },
+        "trust": {
+          "path": "l3_proof_v0/trust/untrusted"
+        }
+      },
+      "expected": {
+        "verdict": "fail",
+        "failure_codes": ["PROTOCOL.untrusted_signer"],
+        "ordering_rule": {
+          "registry_doc": "docs/design/PORTABLE_WORKFLOW_ENUM_REGISTRY_V0.md",
+          "section": "3.3 PROTOCOL ordering",
+          "rule_id": "protocol-ordering-v0"
+        }
+      }
+    },
+    {
+      "id": "V0-303",
+      "levels": ["L3"],
+      "inputs": {
+        "obligation": {
+          "path": "l3_proof_v0/obligation.rulia.bin"
+        },
+        "history": {
+          "path": "l3_proof_v0/history/pass"
+        },
+        "trust": {
+          "path": "l3_proof_v0/trust/trusted"
+        }
+      },
+      "expected": {
+        "verdict": "pass",
+        "failure_codes": []
+      }
+    },
+    {
+      "id": "V0-304",
+      "levels": ["L3"],
+      "inputs": {
+        "obligation": {
+          "path": "l3_proof_v0/obligation.rulia.bin"
+        },
+        "history": {
+          "path": "l3_proof_v0/history/missing"
+        },
+        "trust": {
+          "path": "l3_proof_v0/trust/trusted"
+        }
+      },
+      "expected": {
+        "verdict": "fail",
+        "failure_codes": ["PROTOCOL.missing_receipt"],
+        "ordering_rule": {
+          "registry_doc": "docs/design/PORTABLE_WORKFLOW_ENUM_REGISTRY_V0.md",
+          "section": "3.3 PROTOCOL ordering",
+          "rule_id": "protocol-ordering-v0"
+        }
+      }
+    }
+  ]
+}

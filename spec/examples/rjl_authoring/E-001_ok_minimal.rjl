@@ -1,0 +1,7 @@
+# example_id: E-001
+# gates: [parse]
+# th_ids: []
+# vector_ids: []
+# expected_outcome: [OK]
+
+(x = 1)

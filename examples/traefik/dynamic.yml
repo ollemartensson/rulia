@@ -1,0 +1,84 @@
+http:
+  routers:
+    workflow:
+      entryPoints: [web]
+      rule: "PathPrefix(`/workflow`)"
+      service: workflow-svc
+    crm:
+      entryPoints: [web]
+      rule: "PathPrefix(`/crm`)"
+      service: crm-svc
+    webhook:
+      entryPoints: [web]
+      rule: "PathPrefix(`/webhook`)"
+      service: webhook-svc
+    sign:
+      entryPoints: [web]
+      rule: "PathPrefix(`/sign`)"
+      service: sign-svc
+    mainframe:
+      entryPoints: [web]
+      rule: "PathPrefix(`/mainframe`)"
+      service: mainframe-svc
+    bankid:
+      entryPoints: [web]
+      rule: "PathPrefix(`/bankid`)"
+      service: bankid-svc
+    ledger:
+      entryPoints: [web]
+      rule: "PathPrefix(`/ledger`)"
+      service: ledger-svc
+    pii:
+      entryPoints: [web]
+      rule: "PathPrefix(`/pii`)"
+      service: pii-svc
+    sdk:
+      entryPoints: [web]
+      rule: "PathPrefix(`/sdk`)"
+      service: sdk-svc
+    ui:
+      entryPoints: [web]
+      rule: "PathPrefix(`/ui`)"
+      service: ui-svc
+
+  services:
+    workflow-svc:
+      loadBalancer:
+        servers:
+          - url: "http://workflow-host-julia:8080"
+    crm-svc:
+      loadBalancer:
+        servers:
+          - url: "http://crm-mock:8080"
+    webhook-svc:
+      loadBalancer:
+        servers:
+          - url: "http://webhook-mock:8080"
+    sign-svc:
+      loadBalancer:
+        servers:
+          - url: "http://signing-mock:8080"
+    mainframe-svc:
+      loadBalancer:
+        servers:
+          - url: "http://mainframe-mock:8080"
+    bankid-svc:
+      loadBalancer:
+        servers:
+          - url: "http://bankid-test:8080"
+    ledger-svc:
+      loadBalancer:
+        servers:
+          - url: "http://audit-ledger:8080"
+    pii-svc:
+      loadBalancer:
+        servers:
+          - url: "http://pii-vault-mock:8080"
+    sdk-svc:
+      loadBalancer:
+        servers:
+          - url: "http://sdk-gateway:8080"
+    ui-svc:
+      loadBalancer:
+        servers:
+          - url: "http://dialog-ui:8080"

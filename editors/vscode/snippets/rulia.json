@@ -1,0 +1,363 @@
+{
+  "Map": {
+    "prefix": "map",
+    "body": [
+      "(${1:key} = ${2:value}$0)"
+    ],
+    "description": "Create a map with key-value pair"
+  },
+  "Map Multi": {
+    "prefix": "mapm",
+    "body": [
+      "(",
+      "  ${1:key1} = ${2:value1},",
+      "  ${3:key2} = ${4:value2}$0",
+      ")"
+    ],
+    "description": "Create a map with multiple key-value pairs"
+  },
+  "Vector": {
+    "prefix": "vec",
+    "body": [
+      "[${1:items}]$0"
+    ],
+    "description": "Create a vector"
+  },
+  "Set": {
+    "prefix": "set",
+    "body": [
+      "Set([${1:items}])$0"
+    ],
+    "description": "Create a set"
+  },
+  "Let Binding": {
+    "prefix": "let",
+    "body": [
+      "let ${1:name} = ${2:value}",
+      "${0:body}"
+    ],
+    "description": "Create a let binding"
+  },
+  "Let Block": {
+    "prefix": "letb",
+    "body": [
+      "let {",
+      "  ${1:name} = ${2:value};",
+      "  ${3:name2} = ${4:value2}",
+      "}",
+      "${0:body}"
+    ],
+    "description": "Create a let block with multiple bindings"
+  },
+  "Let Destructure Tuple": {
+    "prefix": "letd",
+    "body": [
+      "let (${1:a}, ${2:b}) = ${3:expr}",
+      "${0:body}"
+    ],
+    "description": "Destructure a tuple/vector"
+  },
+  "Let Destructure Vector": {
+    "prefix": "letdv",
+    "body": [
+      "let [${1:a}, ${2:b}] = ${3:expr}",
+      "${0:body}"
+    ],
+    "description": "Destructure a vector"
+  },
+  "Function": {
+    "prefix": "fn",
+    "body": [
+      "fn(${1:params}) =>",
+      "  ${0:body}"
+    ],
+    "description": "Create an anonymous function"
+  },
+  "Named Function": {
+    "prefix": "letfn",
+    "body": [
+      "let ${1:name} = fn(${2:params}) =>",
+      "  ${0:body}"
+    ],
+    "description": "Create a named function"
+  },
+  "Constructor": {
+    "prefix": "con",
+    "body": [
+      "${1:Type}(${2:field} = ${3:value}$0)"
+    ],
+    "description": "Create a tagged constructor"
+  },
+  "User Constructor": {
+    "prefix": "user",
+    "body": [
+      "User(",
+      "  id = ${1:id},",
+      "  name = \"${2:name}\",",
+      "  email = \"${3:email}\"$0",
+      ")"
+    ],
+    "description": "Create a User constructor"
+  },
+  "Keyword Simple": {
+    "prefix": ":k",
+    "body": [
+      ":${1:keyword}$0"
+    ],
+    "description": "Create a simple keyword"
+  },
+  "Keyword Namespaced": {
+    "prefix": ":kn",
+    "body": [
+      ":${1:namespace}_${2:name}$0"
+    ],
+    "description": "Create a namespaced keyword"
+  },
+  "Keyword Explicit": {
+    "prefix": ":ke",
+    "body": [
+      "Keyword(\"${1:namespace}/${2:name}\")$0"
+    ],
+    "description": "Create an explicit keyword"
+  },
+  "Symbol": {
+    "prefix": "sym",
+    "body": [
+      "'${1:symbol}$0"
+    ],
+    "description": "Create a symbol"
+  },
+  "Logic Variable": {
+    "prefix": "lv",
+    "body": [
+      "@?${1:var}$0"
+    ],
+    "description": "Create a logic variable"
+  },
+  "UUID": {
+    "prefix": "uuid",
+    "body": [
+      "UUID(\"${1:uuid}\")$0"
+    ],
+    "description": "Create a UUID"
+  },
+  "UUID Generate": {
+    "prefix": "uuidn",
+    "body": [
+      "@new(:uuid)$0"
+    ],
+    "description": "Generate a new UUID at parse time"
+  },
+  "ULID": {
+    "prefix": "ulid",
+    "body": [
+      "ULID(\"${1:ulid}\")$0"
+    ],
+    "description": "Create a ULID"
+  },
+  "ULID Generate": {
+    "prefix": "ulidn",
+    "body": [
+      "@new(:ulid)$0"
+    ],
+    "description": "Generate a new ULID at parse time"
+  },
+  "Instant": {
+    "prefix": "inst",
+    "body": [
+      "Instant(\"${1:2025-01-01T00:00:00Z}\")$0"
+    ],
+    "description": "Create an Instant (timestamp)"
+  },
+  "Now": {
+    "prefix": "now",
+    "body": [
+      "@new(:now)$0"
+    ],
+    "description": "Generate current timestamp at parse time"
+  },
+  "Ref ID": {
+    "prefix": "ref",
+    "body": [
+      "Ref(${1:id})$0"
+    ],
+    "description": "Create a reference by ID"
+  },
+  "Ref Lookup": {
+    "prefix": "refl",
+    "body": [
+      "Ref(:${1:attr}, ${2:value})$0"
+    ],
+    "description": "Create a lookup reference"
+  },
+  "Generator": {
+    "prefix": "gen",
+    "body": [
+      "Generator(:${1|uuid,ulid,now|})$0"
+    ],
+    "description": "Create a deferred generator"
+  },
+  "Bytes": {
+    "prefix": "bytes",
+    "body": [
+      "0x[${1:hex}]$0"
+    ],
+    "description": "Create byte literal"
+  },
+  "Import": {
+    "prefix": "import",
+    "body": [
+      "import \"${1:path}\"$0"
+    ],
+    "description": "Import a file"
+  },
+  "Import with Hash": {
+    "prefix": "importh",
+    "body": [
+      "import \"${1:path}\" ${2|sha256,blake3|}:${3:hash}$0"
+    ],
+    "description": "Import a file with hash verification"
+  },
+  "Namespace Block": {
+    "prefix": "ns",
+    "body": [
+      "@ns ${1:namespace} begin",
+      "  ${0:body}",
+      "end"
+    ],
+    "description": "Create a namespace block"
+  },
+  "Metadata": {
+    "prefix": "meta",
+    "body": [
+      "@meta(${1:key} = ${2:value})",
+      "${0:body}"
+    ],
+    "description": "Add metadata to a value"
+  },
+  "Docstring": {
+    "prefix": "doc",
+    "body": [
+      "\"${1:documentation}\"",
+      "${0:body}"
+    ],
+    "description": "Add a docstring to a value"
+  },
+  "Docstring Triple": {
+    "prefix": "doc3",
+    "body": [
+      "\"\"\"",
+      "${1:documentation}",
+      "\"\"\"",
+      "${0:body}"
+    ],
+    "description": "Add a multi-line docstring"
+  },
+  "Query": {
+    "prefix": "query",
+    "body": [
+      "Query(",
+      "  find = [${1:@?e}],",
+      "  where = [",
+      "    [${2:@?e}, :${3:attr}, ${4:@?val}]$0",
+      "  ]",
+      ")"
+    ],
+    "description": "Create a Datalog query"
+  },
+  "Query Pattern": {
+    "prefix": "qpat",
+    "body": [
+      "[@?${1:e}, :${2:attr}, ${3:@?val}]$0"
+    ],
+    "description": "Create a query pattern"
+  },
+  "Query Clause Compare": {
+    "prefix": "qcmp",
+    "body": [
+      "(@?${1:var} ${2|>=,<=,==,!=,>,<|} ${3:value})$0"
+    ],
+    "description": "Create a comparison clause"
+  },
+  "Schema Attribute": {
+    "prefix": "attr",
+    "body": [
+      "(",
+      "  db_id = ${1:100},",
+      "  db_ident = :${2:entity}_${3:attr},",
+      "  db_valueType = :${4|string,int,float,bool,ref,instant,uuid,bytes|},",
+      "  db_cardinality = :${5|one,many|}$0",
+      ")"
+    ],
+    "description": "Create a schema attribute"
+  },
+  "String Interpolation": {
+    "prefix": "si",
+    "body": [
+      "\"${1:text} \\$${2:var}${3: more text}\"$0"
+    ],
+    "description": "String with variable interpolation"
+  },
+  "String Interpolation Expression": {
+    "prefix": "sie",
+    "body": [
+      "\"${1:text} \\$(${2:expr})${3: more text}\"$0"
+    ],
+    "description": "String with expression interpolation"
+  },
+  "Merge": {
+    "prefix": "merge",
+    "body": [
+      "merge(${1:map1}, ${2:map2})$0"
+    ],
+    "description": "Merge two maps"
+  },
+  "Concat": {
+    "prefix": "concat",
+    "body": [
+      "concat(${1:str1}, ${2:str2})$0"
+    ],
+    "description": "Concatenate strings"
+  },
+  "Get": {
+    "prefix": "get",
+    "body": [
+      "get(${1:collection}, ${2:index})$0"
+    ],
+    "description": "Get element from collection"
+  },
+  "Config File": {
+    "prefix": "config",
+    "body": [
+      "# ${1:Configuration File}",
+      "",
+      "(",
+      "  version = \"${2:1.0}\",",
+      "  ",
+      "  ${3:settings} = (",
+      "    ${4:key} = ${5:value}",
+      "  )",
+      ")"
+    ],
+    "description": "Create a configuration file template"
+  },
+  "Schema File": {
+    "prefix": "schema",
+    "body": [
+      "# ${1:Schema Definition}",
+      "",
+      "(",
+      "  schema_version = \"1.0\",",
+      "  schema_attributes = [",
+      "    (",
+      "      db_id = ${2:100},",
+      "      db_ident = :${3:entity}_${4:attr},",
+      "      db_valueType = :${5|string,int,float,bool,ref,instant,uuid,bytes|},",
+      "      db_cardinality = :${6|one,many|}",
+      "    )$0",
+      "  ]",
+      ")"
+    ],
+    "description": "Create a schema file template"
+  }
+}

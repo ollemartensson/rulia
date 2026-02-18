@@ -1,0 +1,201 @@
+{
+  "schema_version": "portable_workflow.vectorset.v0",
+  "format_id": "portable_workflow.vectorset.v0",
+  "vectorset_id": "portable-workflow-v0-l2-artifact-pipeline",
+  "vectors": [
+    {
+      "id": "V0-211",
+      "levels": ["L2"],
+      "scenario_id": "L2-001",
+      "inputs": {
+        "artifact": {
+          "path": "workflow_artifact_v0_subset/artifact_assign_emit_end.rulia.bin"
+        },
+        "initial_state": {
+          "path": "l2_evalir_v0/initial_state_base.json"
+        }
+      },
+      "expected": {
+        "verdict": "pass",
+        "failure_codes": [],
+        "eval_expected": {
+          "control": "end",
+          "emissions": [
+            {}
+          ]
+        }
+      }
+    },
+    {
+      "id": "V0-212",
+      "levels": ["L2"],
+      "scenario_id": "L2-002",
+      "inputs": {
+        "artifact": {
+          "path": "workflow_artifact_v0_subset/artifact_request_suspend.rulia.bin"
+        },
+        "initial_state": {
+          "path": "l2_evalir_v0/initial_state_base.json"
+        },
+        "history": {
+          "path": "l2_evalir_v0/history_prefix_empty.json"
+        },
+        "gamma_core": {
+          "path": "l2_evalir_v0/gamma_core_main.json"
+        }
+      },
+      "expected": {
+        "verdict": "pass",
+        "failure_codes": [],
+        "eval_expected": {
+          "control": "suspend",
+          "obligations": [
+            {
+              "obligation_type": "receipt_valid"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "V0-220",
+      "levels": ["L2"],
+      "scenario_id": "L2-005",
+      "inputs": {
+        "artifact": {
+          "path": "workflow_artifact_v0_subset/artifact_expression_assign_request_suspend.rulia.bin"
+        },
+        "initial_state": {
+          "path": "l2_evalir_v0/initial_state_with_amount_high.json"
+        },
+        "history": {
+          "path": "l2_evalir_v0/history_prefix_empty.json"
+        },
+        "gamma_core": {
+          "path": "l2_evalir_v0/gamma_core_main.json"
+        }
+      },
+      "expected": {
+        "verdict": "pass",
+        "failure_codes": [],
+        "eval_expected": {
+          "control": "suspend",
+          "state_out": {
+            "order": {
+              "risk_class": "high"
+            }
+          },
+          "requests": [
+            {
+              "args": {
+                "amount": 1250,
+                "channel": "email",
+                "risk_class": "high"
+              }
+            }
+          ],
+          "obligations": [
+            {
+              "obligation_type": "receipt_valid"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "V0-221",
+      "levels": ["L2"],
+      "scenario_id": "L2-006",
+      "inputs": {
+        "artifact": {
+          "path": "workflow_artifact_v0_subset/artifact_expression_branch_if_end.rulia.bin"
+        },
+        "initial_state": {
+          "path": "l2_evalir_v0/initial_state_with_amount_high.json"
+        }
+      },
+      "expected": {
+        "verdict": "pass",
+        "failure_codes": [],
+        "eval_expected": {
+          "control": "end",
+          "state_out": {
+            "order": {
+              "status": "open_case"
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "V0-222",
+      "levels": ["L2"],
+      "scenario_id": "L2-007",
+      "inputs": {
+        "artifact": {
+          "path": "workflow_artifact_v0_subset/artifact_expression_branch_if_end.rulia.bin"
+        },
+        "initial_state": {
+          "path": "l2_evalir_v0/initial_state_with_amount_low.json"
+        }
+      },
+      "expected": {
+        "verdict": "pass",
+        "failure_codes": [],
+        "eval_expected": {
+          "control": "end",
+          "state_out": {
+            "order": {
+              "status": "wait_docs"
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "V0-223",
+      "levels": ["L2"],
+      "scenario_id": "L2-008",
+      "inputs": {
+        "artifact": {
+          "path": "workflow_artifact_v0_subset/import_recursive_expression/main.rjl"
+        },
+        "initial_state": {
+          "path": "l2_evalir_v0/initial_state_with_amount_high.json"
+        },
+        "history": {
+          "path": "l2_evalir_v0/history_prefix_empty.json"
+        },
+        "gamma_core": {
+          "path": "l2_evalir_v0/gamma_core_main.json"
+        }
+      },
+      "expected": {
+        "verdict": "pass",
+        "failure_codes": [],
+        "eval_expected": {
+          "control": "suspend",
+          "state_out": {
+            "order": {
+              "risk_class": "high"
+            }
+          },
+          "requests": [
+            {
+              "args": {
+                "amount": 1250,
+                "channel": "email",
+                "risk_class": "high"
+              }
+            }
+          ],
+          "obligations": [
+            {
+              "obligation_type": "receipt_valid"
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

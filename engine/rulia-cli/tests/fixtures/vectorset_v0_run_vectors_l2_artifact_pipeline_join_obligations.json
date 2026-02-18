@@ -1,0 +1,35 @@
+{
+  "schema_version": "portable_workflow.vectorset.v0",
+  "format_id": "portable_workflow.vectorset.v0",
+  "vectorset_id": "portable-workflow-v0-l2-artifact-pipeline-join-obligations",
+  "vectors": [
+    {
+      "id": "V0-219",
+      "levels": ["L2"],
+      "scenario_id": "L2-004",
+      "inputs": {
+        "artifact": {
+          "path": "workflow_artifact_v0_subset/artifact_join_wait_for_request.rulia.bin"
+        },
+        "initial_state": {
+          "path": "l2_evalir_v0/initial_state_base.json"
+        },
+        "history": {
+          "path": "l2_evalir_v0/history_prefix_join_one_receipt.json"
+        },
+        "gamma_core": {
+          "path": "l2_evalir_v0/gamma_core_main.json"
+        }
+      },
+      "expected": {
+        "verdict": "fail",
+        "failure_codes": ["EVAL.E_STEP_CONTRACT"],
+        "ordering_rule": {
+          "registry_doc": "docs/design/PORTABLE_WORKFLOW_ENUM_REGISTRY_V0.md",
+          "section": "3.2 EVAL ordering (MUST match Step Eval v0)",
+          "rule_id": "eval-ordering-v0"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+plugins {
+    id 'java'
+    id 'application'
+}
+
+group = 'com.rulia.demo'
+version = '0.1.0'
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(21)
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.17.2'
+}
+
+application {
+    mainClass = 'com.rulia.demo.AuditLedgerServer'
+}
+
+tasks.register('canonVerify', JavaExec) {
+    group = 'verification'
+    description = 'Verifies canonical JSON vectors against expected bytes and sha256 digests'
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'com.rulia.demo.CanonVerifyMain'
+}

@@ -1,0 +1,127 @@
+{
+    "name": "rulia",
+    "displayName": "Rulia",
+    "description": "Language support for Rulia data notation (.rjl files)",
+    "version": "0.1.0",
+    "publisher": "rulia",
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/rulia/rulia"
+    },
+    "engines": {
+        "vscode": "^1.82.0"
+    },
+    "categories": [
+        "Programming Languages",
+        "Snippets",
+        "Formatters"
+    ],
+    "keywords": [
+        "rulia",
+        "data",
+        "notation",
+        "edn",
+        "julia"
+    ],
+    "activationEvents": [
+        "onLanguage:rulia",
+        "onCommand:rulia.selfTest"
+    ],
+    "main": "./out/extension.js",
+    "contributes": {
+        "languages": [
+            {
+                "id": "rulia",
+                "aliases": [
+                    "Rulia",
+                    "rulia"
+                ],
+                "extensions": [
+                    ".rjl"
+                ],
+                "configuration": "./language-configuration.json",
+                "icon": {
+                    "light": "./icons/rulia-light.svg",
+                    "dark": "./icons/rulia-dark.svg"
+                }
+            }
+        ],
+        "grammars": [
+            {
+                "language": "rulia",
+                "scopeName": "source.rulia",
+                "path": "./syntaxes/rulia.tmLanguage.json"
+            }
+        ],
+        "snippets": [
+            {
+                "language": "rulia",
+                "path": "./snippets/rulia.json"
+            }
+        ],
+        "commands": [
+            {
+                "command": "rulia.selfTest",
+                "title": "Rulia: Self Test Toolchain Download"
+            }
+        ],
+        "configuration": {
+            "title": "Rulia",
+            "properties": {
+                "rulia.serverPath": {
+                    "type": "string",
+                    "default": "rulia-lsp",
+                    "description": "Path to the rulia-lsp executable. When set, auto-download is skipped."
+                },
+                "rulia.tools.autoDownload": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Automatically download the Rulia toolchain (lsp/fmt/cli) using a release manifest."
+                },
+                "rulia.tools.version": {
+                    "type": "string",
+                    "default": "0.1.0",
+                    "description": "Toolchain version to install. Use a specific release version or \"latest\"."
+                },
+                "rulia.tools.manifestUrl": {
+                    "type": "string",
+                    "default": "",
+                    "description": "HTTPS URL to a release manifest.json. Required when auto-download is enabled."
+                },
+                "rulia.tools.cacheDir": {
+                    "type": "string",
+                    "default": "",
+                    "description": "Optional cache directory for downloaded tools. Defaults to the extension's global storage path."
+                }
+            }
+        },
+        "configurationDefaults": {
+            "[rulia]": {
+                "editor.tabSize": 2,
+                "editor.insertSpaces": true,
+                "editor.autoClosingBrackets": "always",
+                "editor.autoClosingQuotes": "always",
+                "editor.formatOnSave": true,
+                "editor.wordWrap": "on"
+            }
+        }
+    },
+    "dependencies": {
+        "tar": "^7.5.7",
+        "unzipper": "^0.12.0",
+        "vscode-languageclient": "^9.0.1"
+    },
+    "devDependencies": {
+        "@types/node": "^24.10.1",
+        "@types/tar": "^6.1.13",
+        "@types/unzipper": "^0.10.10",
+        "@types/vscode": "^1.74.0",
+        "typescript": "^5.0.0"
+    },
+    "scripts": {
+        "vscode:prepublish": "npm run compile",
+        "compile": "tsc -p ./",
+        "watch": "tsc -watch -p ./"
+    }
+}

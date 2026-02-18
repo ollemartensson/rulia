@@ -1,0 +1,3 @@
+.DS_Store
+sdk/julia/Rulia.jl/Manifest.toml
+benchmarks/canonical-json/results/history/round-*-qa-*.json

@@ -1,0 +1,27 @@
+{
+  "schema_version": "portable_workflow.vectorset.v0",
+  "format_id": "portable_workflow.vectorset.v0",
+  "vectors": [
+    {
+      "id": "V0-002",
+      "levels": ["L0"],
+      "expected": {
+        "verdict": "fail",
+        "failure_codes": ["EVAL.E_STEP_CONTRACT"],
+        "ordering_rule": {
+          "registry_doc": "docs/design/PORTABLE_WORKFLOW_ENUM_REGISTRY_V0.md",
+          "section": "Section 2.5 EVAL ordering",
+          "rule_id": "eval-ordering-v0"
+        }
+      }
+    },
+    {
+      "id": "V0-001",
+      "levels": ["L0"],
+      "expected": {
+        "verdict": "pass",
+        "failure_codes": []
+      }
+    }
+  ]
+}

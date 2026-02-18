@@ -1,0 +1,12 @@
+{
+  "version": "0.0.0",
+  "artifacts": [
+    {
+      "target": "x86_64-unknown-linux-gnu",
+      "file": "rulia-tools-0.0.0-x86_64-unknown-linux-gnu.tar.gz",
+      "url": "https://storage.googleapis.com/<bucket>/rulia/0.0.0/rulia-tools-0.0.0-x86_64-unknown-linux-gnu.tar.gz",
+      "sha256": "<sha256>",
+      "bins": ["rulia", "rulia-fmt", "rulia-lsp"]
+    }
+  ]
+}

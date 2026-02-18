@@ -1,0 +1,7 @@
+# example_id: E-009
+# gates: [parse, strict-profile]
+# th_ids: [TH-012]
+# vector_ids: [V-013]
+# expected_outcome: [OK_PARSE, OK_STRICT_PROFILE]
+
+Instant("2025-01-01T00:00:00Z")

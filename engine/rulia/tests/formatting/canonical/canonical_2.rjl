@@ -1,0 +1,6 @@
+@meta(author = "ops", version = 1)
+"""
+Canonical text format.
+Second line.
+"""
+Report([1, 2, 3])

@@ -1,0 +1,7 @@
+# example_id: E-004
+# gates: [encode]
+# th_ids: [TH-006]
+# vector_ids: [V-007]
+# expected_outcome: [OK]
+
+Set([3, 1, 2])

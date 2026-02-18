@@ -1,0 +1,30 @@
+[package]
+name = "rulia-fuzz"
+version = "0.0.0"
+edition = "2021"
+publish = false
+
+[package.metadata]
+cargo-fuzz = true
+
+[dependencies]
+libfuzzer-sys = "0.4"
+rulia = { path = "../crates/rulia" }
+
+[[bin]]
+name = "binary_decode"
+path = "fuzz_targets/binary_decode.rs"
+test = false
+doc = false
+
+[[bin]]
+name = "framing_decode"
+path = "fuzz_targets/framing_decode.rs"
+test = false
+doc = false
+
+[[bin]]
+name = "text_parse"
+path = "fuzz_targets/text_parse.rs"
+test = false
+doc = false

@@ -1,0 +1,9 @@
+RULIA ENGINE - COMMERCIAL LICENSE GRANT
+Copyright (c) 2026 Olle Mårtensson. All Rights Reserved.
+
+This document grants [LICENSEE] a perpetual, non-exclusive, royalty-free,
+non-transferable commercial license to use, modify, and deploy the Software
+known as "rulia" for internal business purposes.
+
+This Commercial License supersedes the obligations of the GNU General Public
+License v3.0 (GPLv3) for the specific artifacts delivered under this agreement.

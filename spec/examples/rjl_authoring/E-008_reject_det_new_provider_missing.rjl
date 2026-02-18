@@ -1,0 +1,7 @@
+# example_id: E-008
+# gates: [deterministic-mode]
+# th_ids: [TH-011]
+# vector_ids: [V-001]
+# expected_outcome: [REJECT_DET_NEW_PROVIDER_MISSING]
+
+@new(:uuid)

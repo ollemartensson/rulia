@@ -1,0 +1,9 @@
+{
+  "wordRaw": "café",
+  "emojiEsc": "\ud83d\ude00",
+  "wordEsc": "caf\u00e9",
+  "nordic": "å",
+  "emojiRaw": "😀",
+  "ints": {"neg": -9007199254740993, "big": 9223372036854775807, "small": 0},
+  "arr": [{"k": "\u00e9"}, {"k": "é"}]
+}

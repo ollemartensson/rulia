@@ -1,0 +1,35 @@
+{
+  "schema_version": "portable_workflow.vectorset.v0",
+  "format_id": "portable_workflow.vectorset.v0",
+  "vectorset_id": "portable-workflow-v0-l2-evalir-rules-branching",
+  "vectors": [
+    {
+      "id": "V0-213",
+      "levels": ["L2"],
+      "scenario_id": "L2-003",
+      "inputs": {
+        "eval_ir": {
+          "path": "l2_evalir_v0/evalir_choose_rules_branch.json"
+        },
+        "initial_state": {
+          "path": "l2_evalir_v0/initial_state_base.json"
+        }
+      },
+      "expected": {
+        "verdict": "pass",
+        "failure_codes": [],
+        "eval_expected": {
+          "control": "end",
+          "state_out": {
+            "order": {
+              "status": "open_case"
+            }
+          },
+          "emissions": [],
+          "requests": [],
+          "obligations": []
+        }
+      }
+    }
+  ]
+}

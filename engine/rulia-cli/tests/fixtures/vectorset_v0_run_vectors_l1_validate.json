@@ -1,0 +1,38 @@
+{
+  "schema_version": "portable_workflow.vectorset.v0",
+  "format_id": "portable_workflow.vectorset.v0",
+  "vectorset_id": "portable-workflow-v0-l1-validate",
+  "vectors": [
+    {
+      "id": "V0-010",
+      "levels": ["L1"],
+      "inputs": {
+        "bundle": {
+          "path": "bundle_minimal_v0/valid_bundle"
+        }
+      },
+      "expected": {
+        "verdict": "pass",
+        "failure_codes": []
+      }
+    },
+    {
+      "id": "V0-011",
+      "levels": ["L1"],
+      "inputs": {
+        "bundle": {
+          "path": "bundle_minimal_v0/hash_mismatch"
+        }
+      },
+      "expected": {
+        "verdict": "fail",
+        "failure_codes": ["EVAL.E_ARTIFACT_IDENTITY"],
+        "ordering_rule": {
+          "registry_doc": "docs/design/PORTABLE_WORKFLOW_ENUM_REGISTRY_V0.md",
+          "section": "3.2 EVAL ordering (MUST match Step Eval v0)",
+          "rule_id": "eval-ordering-v0"
+        }
+      }
+    }
+  ]
+}

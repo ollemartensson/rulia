@@ -1,0 +1,4 @@
+module TreeSitterRulia {
+    umbrella "/Users/olle/src/rulia/tools/tree-sitter-rulia/bindings/swift"
+    export *
+}

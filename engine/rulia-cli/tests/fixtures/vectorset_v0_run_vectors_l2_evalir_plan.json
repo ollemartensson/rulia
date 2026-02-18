@@ -1,0 +1,62 @@
+{
+  "schema_version": "portable_workflow.vectorset.v0",
+  "format_id": "portable_workflow.vectorset.v0",
+  "vectorset_id": "portable-workflow-v0-l2-evalir-plan",
+  "vectors": [
+    {
+      "id": "V0-201",
+      "levels": ["L2"],
+      "scenario_id": "L2-001",
+      "inputs": {
+        "eval_ir": {
+          "path": "l2_evalir_v0/evalir_assign_emit_end.json"
+        },
+        "initial_state": {
+          "path": "l2_evalir_v0/initial_state_base.json"
+        }
+      },
+      "expected": {
+        "verdict": "pass",
+        "failure_codes": [],
+        "eval_expected": {
+          "control": "end",
+          "emissions": [
+            {
+              "kind": "audit",
+              "event": "order_activated"
+            }
+          ],
+          "requests": [],
+          "obligations": []
+        }
+      }
+    },
+    {
+      "id": "V0-202",
+      "levels": ["L2"],
+      "scenario_id": "L2-002",
+      "inputs": {
+        "eval_ir": {
+          "path": "l2_evalir_v0/evalir_request_suspend.json"
+        },
+        "initial_state": {
+          "path": "l2_evalir_v0/initial_state_base.json"
+        },
+        "history": {
+          "path": "l2_evalir_v0/history_prefix_empty.json"
+        },
+        "gamma_core": {
+          "path": "l2_evalir_v0/gamma_core_main.json"
+        }
+      },
+      "expected": {
+        "verdict": "pass",
+        "failure_codes": [],
+        "eval_expected": {
+          "control": "suspend",
+          "emissions": []
+        }
+      }
+    }
+  ]
+}

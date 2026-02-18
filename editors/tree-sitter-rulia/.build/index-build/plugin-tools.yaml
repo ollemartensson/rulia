@@ -1,0 +1,22 @@
+client:
+  name: basic
+  file-system: device-agnostic
+tools: {}
+targets:
+  "PackageStructure": ["<PackageStructure>"]
+  "TreeSitterRulia-arm64-apple-macosx26.0-debug.module": ["<TreeSitterRulia-arm64-apple-macosx26.0-debug.module>"]
+  "main": []
+  "test": []
+default: "main"
+nodes:
+  "/Users/olle/src/rulia/tools/tree-sitter-rulia/":
+    is-directory-structure: true
+    content-exclusion-patterns: [".git",".build"]
+commands:
+  "PackageStructure":
+    tool: package-structure-tool
+    inputs: ["/Users/olle/src/rulia/tools/tree-sitter-rulia/","/Users/olle/src/rulia/tools/tree-sitter-rulia/Package.swift","/Users/olle/src/rulia/tools/tree-sitter-rulia/Package.resolved"]
+    outputs: ["<PackageStructure>"]
+    description: "Planning build"
+    allow-missing-inputs: true
+

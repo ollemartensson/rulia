@@ -1,0 +1,449 @@
+{
+  "timestamp_utc": "2026-02-11T22:55:58Z",
+  "round": "opt-rust-ffi-sharded",
+  "host": {
+    "os": "Darwin",
+    "arch": "arm64",
+    "kernel": "25.3.0",
+    "cpu": "Apple M2 Max"
+  },
+  "toolchain": {
+    "rust": "rustc 1.89.0 (29483883e 2025-08-04)",
+    "julia": "julia version 1.12.2",
+    "java": "openjdk version \"21.0.10\" 2026-01-20 LTS",
+    "gradle": "9.3.1"
+  },
+  "settings": {
+    "runs": 3,
+    "vectors_dir": "/Users/olle/src/rulia/examples/contracts/canon_vectors",
+    "profiles": {
+      "base": {
+        "iterations": 50000,
+        "warmup": 5000
+      },
+      "stress": {
+        "iterations": 5000,
+        "warmup": 500
+      }
+    },
+    "wasm_browser_enabled": false
+  },
+  "results": [
+    {
+      "profile": "base",
+      "language": "java",
+      "runs": [
+        {
+          "language": "java",
+          "profile": "base",
+          "vectors": 3,
+          "iterations": 50000,
+          "ops": 150000,
+          "elapsed_ns": 22853875,
+          "ops_per_sec": 6563438.367,
+          "checksum": "caceec5bcfbdd390"
+        },
+        {
+          "language": "java",
+          "profile": "base",
+          "vectors": 3,
+          "iterations": 50000,
+          "ops": 150000,
+          "elapsed_ns": 21483416,
+          "ops_per_sec": 6982129.844,
+          "checksum": "caceec5bcfbdd390"
+        },
+        {
+          "language": "java",
+          "profile": "base",
+          "vectors": 3,
+          "iterations": 50000,
+          "ops": 150000,
+          "elapsed_ns": 21430000,
+          "ops_per_sec": 6999533.364,
+          "checksum": "caceec5bcfbdd390"
+        }
+      ],
+      "summary": {
+        "runs": 3,
+        "vectors": 3,
+        "iterations": 50000,
+        "mean_ops_per_sec": 6848367.191666666,
+        "median_ops_per_sec": 6982129.844,
+        "min_ops_per_sec": 6563438.367,
+        "max_ops_per_sec": 6999533.364,
+        "stddev_ops_per_sec": 246908.985198076,
+        "mean_elapsed_ms": 21.922430333333335,
+        "median_elapsed_ms": 21.483416
+      },
+      "checksums_unique": [
+        "caceec5bcfbdd390"
+      ]
+    },
+    {
+      "profile": "base",
+      "language": "julia",
+      "runs": [
+        {
+          "profile": "base",
+          "elapsed_ns": 3743958,
+          "iterations": 50000,
+          "checksum": "caceec5bcfbdd390",
+          "ops": 150000,
+          "language": "julia",
+          "vectors": 3,
+          "ops_per_sec": 40064552.00619238
+        },
+        {
+          "profile": "base",
+          "elapsed_ns": 3805083,
+          "iterations": 50000,
+          "checksum": "caceec5bcfbdd390",
+          "ops": 150000,
+          "language": "julia",
+          "vectors": 3,
+          "ops_per_sec": 39420953.498254836
+        },
+        {
+          "profile": "base",
+          "elapsed_ns": 4454708,
+          "iterations": 50000,
+          "checksum": "caceec5bcfbdd390",
+          "ops": 150000,
+          "language": "julia",
+          "vectors": 3,
+          "ops_per_sec": 33672240.694564044
+        }
+      ],
+      "summary": {
+        "runs": 3,
+        "vectors": 3,
+        "iterations": 50000,
+        "mean_ops_per_sec": 37719248.73300376,
+        "median_ops_per_sec": 39420953.498254836,
+        "min_ops_per_sec": 33672240.694564044,
+        "max_ops_per_sec": 40064552.00619238,
+        "stddev_ops_per_sec": 3519553.9926603725,
+        "mean_elapsed_ms": 4.001249666666667,
+        "median_elapsed_ms": 3.805083
+      },
+      "checksums_unique": [
+        "caceec5bcfbdd390"
+      ]
+    },
+    {
+      "profile": "base",
+      "language": "rust",
+      "runs": [
+        {
+          "language": "rust",
+          "profile": "base",
+          "vectors": 3,
+          "iterations": 50000,
+          "ops": 150000,
+          "threads": 8,
+          "elapsed_ns": 4126500,
+          "ops_per_sec": 36350418.030,
+          "checksum": "caceec5bcfbdd390"
+        },
+        {
+          "language": "rust",
+          "profile": "base",
+          "vectors": 3,
+          "iterations": 50000,
+          "ops": 150000,
+          "threads": 11,
+          "elapsed_ns": 4890042,
+          "ops_per_sec": 30674583.163,
+          "checksum": "caceec5bcfbdd390"
+        },
+        {
+          "language": "rust",
+          "profile": "base",
+          "vectors": 3,
+          "iterations": 50000,
+          "ops": 150000,
+          "threads": 10,
+          "elapsed_ns": 4479500,
+          "ops_per_sec": 33485880.121,
+          "checksum": "caceec5bcfbdd390"
+        }
+      ],
+      "summary": {
+        "runs": 3,
+        "vectors": 3,
+        "iterations": 50000,
+        "mean_ops_per_sec": 33503627.10466667,
+        "median_ops_per_sec": 33485880.121,
+        "min_ops_per_sec": 30674583.163,
+        "max_ops_per_sec": 36350418.030,
+        "stddev_ops_per_sec": 2837959.051137839,
+        "mean_elapsed_ms": 4.498680666666667,
+        "median_elapsed_ms": 4.4795
+      },
+      "checksums_unique": [
+        "caceec5bcfbdd390"
+      ]
+    },
+    {
+      "profile": "stress",
+      "language": "java",
+      "runs": [
+        {
+          "language": "java",
+          "profile": "stress",
+          "vectors": 60,
+          "iterations": 5000,
+          "ops": 300000,
+          "elapsed_ns": 61657542,
+          "ops_per_sec": 4865584.814,
+          "checksum": "16f483da5283a340"
+        },
+        {
+          "language": "java",
+          "profile": "stress",
+          "vectors": 60,
+          "iterations": 5000,
+          "ops": 300000,
+          "elapsed_ns": 61531375,
+          "ops_per_sec": 4875561.451,
+          "checksum": "16f483da5283a340"
+        },
+        {
+          "language": "java",
+          "profile": "stress",
+          "vectors": 60,
+          "iterations": 5000,
+          "ops": 300000,
+          "elapsed_ns": 63738625,
+          "ops_per_sec": 4706722.180,
+          "checksum": "16f483da5283a340"
+        }
+      ],
+      "summary": {
+        "runs": 3,
+        "vectors": 60,
+        "iterations": 5000,
+        "mean_ops_per_sec": 4815956.148333333,
+        "median_ops_per_sec": 4865584.814,
+        "min_ops_per_sec": 4706722.180,
+        "max_ops_per_sec": 4875561.451,
+        "stddev_ops_per_sec": 94730.81969371562,
+        "mean_elapsed_ms": 62.30918066666667,
+        "median_elapsed_ms": 61.657542
+      },
+      "checksums_unique": [
+        "16f483da5283a340"
+      ]
+    },
+    {
+      "profile": "stress",
+      "language": "julia",
+      "runs": [
+        {
+          "profile": "stress",
+          "elapsed_ns": 13798833,
+          "iterations": 5000,
+          "checksum": "16f483da5283a340",
+          "ops": 300000,
+          "language": "julia",
+          "vectors": 60,
+          "ops_per_sec": 21740968.964549392
+        },
+        {
+          "profile": "stress",
+          "elapsed_ns": 11877834,
+          "iterations": 5000,
+          "checksum": "16f483da5283a340",
+          "ops": 300000,
+          "language": "julia",
+          "vectors": 60,
+          "ops_per_sec": 25257130.214145105
+        },
+        {
+          "profile": "stress",
+          "elapsed_ns": 11939500,
+          "iterations": 5000,
+          "checksum": "16f483da5283a340",
+          "ops": 300000,
+          "language": "julia",
+          "vectors": 60,
+          "ops_per_sec": 25126680.34674819
+        }
+      ],
+      "summary": {
+        "runs": 3,
+        "vectors": 60,
+        "iterations": 5000,
+        "mean_ops_per_sec": 24041593.175147563,
+        "median_ops_per_sec": 25126680.34674819,
+        "min_ops_per_sec": 21740968.964549392,
+        "max_ops_per_sec": 25257130.214145105,
+        "stddev_ops_per_sec": 1993466.3555648,
+        "mean_elapsed_ms": 12.538722333333334,
+        "median_elapsed_ms": 11.9395
+      },
+      "checksums_unique": [
+        "16f483da5283a340"
+      ]
+    },
+    {
+      "profile": "stress",
+      "language": "rust",
+      "runs": [
+        {
+          "language": "rust",
+          "profile": "stress",
+          "vectors": 60,
+          "iterations": 5000,
+          "ops": 300000,
+          "threads": 10,
+          "elapsed_ns": 11543000,
+          "ops_per_sec": 25989777.354,
+          "checksum": "16f483da5283a340"
+        },
+        {
+          "language": "rust",
+          "profile": "stress",
+          "vectors": 60,
+          "iterations": 5000,
+          "ops": 300000,
+          "threads": 8,
+          "elapsed_ns": 11956041,
+          "ops_per_sec": 25091917.968,
+          "checksum": "16f483da5283a340"
+        },
+        {
+          "language": "rust",
+          "profile": "stress",
+          "vectors": 60,
+          "iterations": 5000,
+          "ops": 300000,
+          "threads": 12,
+          "elapsed_ns": 10329375,
+          "ops_per_sec": 29043383.554,
+          "checksum": "16f483da5283a340"
+        }
+      ],
+      "summary": {
+        "runs": 3,
+        "vectors": 60,
+        "iterations": 5000,
+        "mean_ops_per_sec": 26708359.625333335,
+        "median_ops_per_sec": 25989777.354,
+        "min_ops_per_sec": 25091917.968,
+        "max_ops_per_sec": 29043383.554,
+        "stddev_ops_per_sec": 2071422.3204941857,
+        "mean_elapsed_ms": 11.276138666666666,
+        "median_elapsed_ms": 11.543
+      },
+      "checksums_unique": [
+        "16f483da5283a340"
+      ]
+    }
+  ],
+  "checksums": [
+    {
+      "profile": "base",
+      "by_language": {
+        "java": [
+          "caceec5bcfbdd390"
+        ],
+        "julia": [
+          "caceec5bcfbdd390"
+        ],
+        "rust": [
+          "caceec5bcfbdd390"
+        ]
+      },
+      "unique_checksums": [
+        "caceec5bcfbdd390"
+      ],
+      "match": true
+    },
+    {
+      "profile": "stress",
+      "by_language": {
+        "java": [
+          "16f483da5283a340"
+        ],
+        "julia": [
+          "16f483da5283a340"
+        ],
+        "rust": [
+          "16f483da5283a340"
+        ]
+      },
+      "unique_checksums": [
+        "16f483da5283a340"
+      ],
+      "match": true
+    }
+  ],
+  "rankings": [
+    {
+      "profile": "base",
+      "ranking": [
+        {
+          "language": "julia",
+          "mean_ops_per_sec": 37719248.73300376,
+          "median_ops_per_sec": 39420953.498254836,
+          "mean_elapsed_ms": 4.001249666666667,
+          "stddev_ops_per_sec": 3519553.9926603725,
+          "vectors": 3,
+          "iterations": 50000
+        },
+        {
+          "language": "rust",
+          "mean_ops_per_sec": 33503627.10466667,
+          "median_ops_per_sec": 33485880.121,
+          "mean_elapsed_ms": 4.498680666666667,
+          "stddev_ops_per_sec": 2837959.051137839,
+          "vectors": 3,
+          "iterations": 50000
+        },
+        {
+          "language": "java",
+          "mean_ops_per_sec": 6848367.191666666,
+          "median_ops_per_sec": 6982129.844,
+          "mean_elapsed_ms": 21.922430333333335,
+          "stddev_ops_per_sec": 246908.985198076,
+          "vectors": 3,
+          "iterations": 50000
+        }
+      ]
+    },
+    {
+      "profile": "stress",
+      "ranking": [
+        {
+          "language": "rust",
+          "mean_ops_per_sec": 26708359.625333335,
+          "median_ops_per_sec": 25989777.354,
+          "mean_elapsed_ms": 11.276138666666666,
+          "stddev_ops_per_sec": 2071422.3204941857,
+          "vectors": 60,
+          "iterations": 5000
+        },
+        {
+          "language": "julia",
+          "mean_ops_per_sec": 24041593.175147563,
+          "median_ops_per_sec": 25126680.34674819,
+          "mean_elapsed_ms": 12.538722333333334,
+          "stddev_ops_per_sec": 1993466.3555648,
+          "vectors": 60,
+          "iterations": 5000
+        },
+        {
+          "language": "java",
+          "mean_ops_per_sec": 4815956.148333333,
+          "median_ops_per_sec": 4865584.814,
+          "mean_elapsed_ms": 62.30918066666667,
+          "stddev_ops_per_sec": 94730.81969371562,
+          "vectors": 60,
+          "iterations": 5000
+        }
+      ]
+    }
+  ]
+}

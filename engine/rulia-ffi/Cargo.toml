@@ -1,0 +1,19 @@
+[package]
+name = "rulia-ffi"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+repository.workspace = true
+description = "C-compatible FFI for Rulia (Julia, Python, etc.)"
+
+[lib]
+crate-type = ["cdylib", "staticlib"]
+
+[dependencies]
+rulia = { path = "../rulia", features = ["serde"] }
+rulia-fmt = { path = "../rulia-fmt" }
+libc = "0.2"
+ed25519-dalek = "2.1"
+
+[build-dependencies]
+cbindgen = "0.26"

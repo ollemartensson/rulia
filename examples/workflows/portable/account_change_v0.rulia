@@ -1,0 +1,11 @@
+(
+  :workflow/id = "account_change_v0",
+  :workflow/version = 0,
+  :workflow/steps = [
+    (:name = "validate" :kind = :pure),
+    (:name = "crm_update" :kind = :capability :capability = "crm.update.v0"),
+    (:name = "audit_append" :kind = :capability :capability = "ledger.append.v0"),
+    (:name = "sign_manifest" :kind = :capability :capability = "sign.mock.v0"),
+    (:name = "verify" :kind = :pure)
+  ]
+)

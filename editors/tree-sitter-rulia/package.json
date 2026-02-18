@@ -1,0 +1,46 @@
+{
+  "name": "tree-sitter-rulia",
+  "version": "0.1.0",
+  "description": "Rulia grammar for tree-sitter",
+  "license": "MIT",
+  "repository": "https://github.com/factflow/rulia",
+  "main": "bindings/node",
+  "types": "bindings/node",
+  "keywords": [
+    "tree-sitter",
+    "rulia"
+  ],
+  "files": [
+    "grammar.js",
+    "binding.gyp",
+    "prebuilds/**",
+    "bindings/node/*",
+    "queries/*",
+    "src/**"
+  ],
+  "devDependencies": {
+    "tree-sitter-cli": "0.22.6",
+    "prebuildify": "^6.0.0"
+  },
+  "dependencies": {
+    "node-gyp-build": "^4.8.0"
+  },
+  "peerDependencies": {
+    "tree-sitter": "^0.21.0"
+  },
+  "peerDependenciesMeta": {
+    "tree_sitter": {
+      "optional": true
+    }
+  },
+  "scripts": {
+    "install": "node-gyp-build",
+    "prebuildify": "prebuildify --napi --strip"
+  },
+  "tree-sitter": [
+    {
+      "scope": "source.rulia",
+      "injection-regex": "^rulia$"
+    }
+  ]
+}

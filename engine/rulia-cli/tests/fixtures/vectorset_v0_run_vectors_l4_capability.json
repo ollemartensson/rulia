@@ -1,0 +1,107 @@
+{
+  "schema_version": "portable_workflow.vectorset.v0",
+  "format_id": "portable_workflow.vectorset.v0",
+  "vectorset_id": "portable-workflow-v0-l4-capability",
+  "vectors": [
+    {
+      "id": "V0-401",
+      "levels": ["L4"],
+      "inputs": {
+        "requirements": {
+          "path": "match_cap_v0/pass/requirements.rulia.bin"
+        },
+        "gamma_cap": {
+          "path": "match_cap_v0/pass/gamma_cap.rulia.bin"
+        }
+      },
+      "expected": {
+        "verdict": "pass",
+        "failure_codes": []
+      }
+    },
+    {
+      "id": "V0-402",
+      "levels": ["L4"],
+      "inputs": {
+        "requirements": {
+          "path": "match_cap_v0/missing_required_capability/requirements.rulia.bin"
+        },
+        "gamma_cap": {
+          "path": "match_cap_v0/missing_required_capability/gamma_cap.rulia.bin"
+        }
+      },
+      "expected": {
+        "verdict": "fail",
+        "failure_codes": ["CAPABILITY.missing_required_capability"],
+        "ordering_rule": {
+          "registry_doc": "docs/design/PORTABLE_WORKFLOW_ENUM_REGISTRY_V0.md",
+          "section": "3.4 CAPABILITY ordering",
+          "rule_id": "capability-ordering-v0"
+        }
+      }
+    },
+    {
+      "id": "V0-403",
+      "levels": ["L4"],
+      "inputs": {
+        "requirements": {
+          "path": "match_cap_v0/incompatible_version/requirements.rulia.bin"
+        },
+        "gamma_cap": {
+          "path": "match_cap_v0/incompatible_version/gamma_cap.rulia.bin"
+        }
+      },
+      "expected": {
+        "verdict": "fail",
+        "failure_codes": ["CAPABILITY.incompatible_version"],
+        "ordering_rule": {
+          "registry_doc": "docs/design/PORTABLE_WORKFLOW_ENUM_REGISTRY_V0.md",
+          "section": "3.4 CAPABILITY ordering",
+          "rule_id": "capability-ordering-v0"
+        }
+      }
+    },
+    {
+      "id": "V0-404",
+      "levels": ["L4"],
+      "inputs": {
+        "requirements": {
+          "path": "match_cap_v0/constraint_violation/requirements.rulia.bin"
+        },
+        "gamma_cap": {
+          "path": "match_cap_v0/constraint_violation/gamma_cap.rulia.bin"
+        }
+      },
+      "expected": {
+        "verdict": "fail",
+        "failure_codes": ["CAPABILITY.constraint_violation"],
+        "ordering_rule": {
+          "registry_doc": "docs/design/PORTABLE_WORKFLOW_ENUM_REGISTRY_V0.md",
+          "section": "3.4 CAPABILITY ordering",
+          "rule_id": "capability-ordering-v0"
+        }
+      }
+    },
+    {
+      "id": "V0-405",
+      "levels": ["L4"],
+      "inputs": {
+        "requirements": {
+          "path": "match_cap_v0/untrusted_or_missing_trust_anchor/requirements.rulia.bin"
+        },
+        "gamma_cap": {
+          "path": "match_cap_v0/untrusted_or_missing_trust_anchor/gamma_cap.rulia.bin"
+        }
+      },
+      "expected": {
+        "verdict": "fail",
+        "failure_codes": ["CAPABILITY.untrusted_or_missing_trust_anchor"],
+        "ordering_rule": {
+          "registry_doc": "docs/design/PORTABLE_WORKFLOW_ENUM_REGISTRY_V0.md",
+          "section": "3.4 CAPABILITY ordering",
+          "rule_id": "capability-ordering-v0"
+        }
+      }
+    }
+  ]
+}

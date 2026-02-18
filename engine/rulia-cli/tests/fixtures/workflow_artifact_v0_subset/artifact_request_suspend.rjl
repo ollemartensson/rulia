@@ -1,0 +1,1 @@
+Tagged("workflow_artifact_v0", (id="wf.request_suspend.v0", version="v0", steps=[(op=:request, capability_id="capability.approvals", operation="submit", args=(channel="email", amount=1250)), (op=:end)]))

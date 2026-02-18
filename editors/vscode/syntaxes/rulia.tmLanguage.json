@@ -1,0 +1,249 @@
+{
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "name": "Rulia",
+  "scopeName": "source.rulia",
+  "patterns": [
+    { "include": "#comments" },
+    { "include": "#strings" },
+    { "include": "#triple-strings" },
+    { "include": "#keywords" },
+    { "include": "#constants" },
+    { "include": "#numbers" },
+    { "include": "#bytes" },
+    { "include": "#symbols" },
+    { "include": "#logic-variables" },
+    { "include": "#keyword-literals" },
+    { "include": "#constructors" },
+    { "include": "#macros" },
+    { "include": "#functions" },
+    { "include": "#operators" },
+    { "include": "#punctuation" }
+  ],
+  "repository": {
+    "comments": {
+      "patterns": [
+        {
+          "name": "comment.line.number-sign.rulia",
+          "match": "#.*$"
+        }
+      ]
+    },
+    "triple-strings": {
+      "name": "string.quoted.triple.rulia",
+      "begin": "\"\"\"",
+      "end": "\"\"\"",
+      "patterns": [
+        { "include": "#string-escapes" },
+        { "include": "#string-interpolation" }
+      ]
+    },
+    "strings": {
+      "name": "string.quoted.double.rulia",
+      "begin": "\"",
+      "end": "\"",
+      "patterns": [
+        { "include": "#string-escapes" },
+        { "include": "#string-interpolation" }
+      ]
+    },
+    "string-escapes": {
+      "name": "constant.character.escape.rulia",
+      "match": "\\\\[\\\\\"nrt$]"
+    },
+    "string-interpolation": {
+      "patterns": [
+        {
+          "name": "meta.interpolation.rulia",
+          "begin": "\\$\\(",
+          "end": "\\)",
+          "beginCaptures": {
+            "0": { "name": "punctuation.definition.interpolation.begin.rulia" }
+          },
+          "endCaptures": {
+            "0": { "name": "punctuation.definition.interpolation.end.rulia" }
+          },
+          "patterns": [
+            { "include": "$self" }
+          ]
+        },
+        {
+          "name": "variable.other.interpolation.rulia",
+          "match": "\\$[a-zA-Z_][a-zA-Z0-9_]*"
+        }
+      ]
+    },
+    "keywords": {
+      "patterns": [
+        {
+          "name": "keyword.control.rulia",
+          "match": "\\b(let|fn|import|begin|end)\\b"
+        },
+        {
+          "name": "keyword.operator.arrow.rulia",
+          "match": "=>"
+        }
+      ]
+    },
+    "constants": {
+      "patterns": [
+        {
+          "name": "constant.language.boolean.true.rulia",
+          "match": "\\btrue\\b"
+        },
+        {
+          "name": "constant.language.boolean.false.rulia",
+          "match": "\\bfalse\\b"
+        },
+        {
+          "name": "constant.language.null.rulia",
+          "match": "\\bnil\\b"
+        }
+      ]
+    },
+    "numbers": {
+      "patterns": [
+        {
+          "name": "constant.numeric.bigint.rulia",
+          "match": "-?[0-9]+N\\b"
+        },
+        {
+          "name": "constant.numeric.unsigned.rulia",
+          "match": "[0-9]+u\\b"
+        },
+        {
+          "name": "constant.numeric.float32.rulia",
+          "match": "-?[0-9]+\\.[0-9]+f\\b"
+        },
+        {
+          "name": "constant.numeric.float.rulia",
+          "match": "-?[0-9]+\\.[0-9]+([eE][+-]?[0-9]+)?\\b"
+        },
+        {
+          "name": "constant.numeric.integer.rulia",
+          "match": "-?[0-9]+\\b"
+        }
+      ]
+    },
+    "bytes": {
+      "name": "constant.other.bytes.rulia",
+      "begin": "0x\\[",
+      "end": "\\]",
+      "beginCaptures": {
+        "0": { "name": "punctuation.definition.bytes.begin.rulia" }
+      },
+      "endCaptures": {
+        "0": { "name": "punctuation.definition.bytes.end.rulia" }
+      },
+      "patterns": [
+        {
+          "name": "constant.numeric.hex.rulia",
+          "match": "[0-9a-fA-F]+"
+        }
+      ]
+    },
+    "symbols": {
+      "patterns": [
+        {
+          "name": "constant.other.symbol.rulia",
+          "match": "'[a-zA-Z_][a-zA-Z0-9_/]*"
+        },
+        {
+          "name": "variable.other.wildcard.rulia",
+          "match": "\\b_\\b"
+        }
+      ]
+    },
+    "logic-variables": {
+      "name": "variable.other.logic.rulia",
+      "match": "@\\?[a-zA-Z_][a-zA-Z0-9_]*"
+    },
+    "keyword-literals": {
+      "patterns": [
+        {
+          "name": "constant.other.keyword.rulia",
+          "match": ":[a-zA-Z_][a-zA-Z0-9_]*"
+        }
+      ]
+    },
+    "constructors": {
+      "patterns": [
+        {
+          "name": "entity.name.type.constructor.rulia",
+          "match": "\\b(Set|Keyword|Symbol|Tagged|Ref|UUID|ULID|Instant|Query|Generator)\\b"
+        },
+        {
+          "name": "entity.name.type.custom.rulia",
+          "match": "\\b[A-Z][a-zA-Z0-9]*\\b(?=\\s*\\()"
+        }
+      ]
+    },
+    "macros": {
+      "patterns": [
+        {
+          "name": "keyword.other.macro.rulia",
+          "match": "@(meta|ns|new)\\b"
+        }
+      ]
+    },
+    "functions": {
+      "patterns": [
+        {
+          "name": "entity.name.function.builtin.rulia",
+          "match": "\\b(merge|concat|get|count|sum|min|max|avg|distinct)\\b"
+        },
+        {
+          "name": "entity.name.function.rulia",
+          "match": "\\b[a-z_][a-zA-Z0-9_]*\\b(?=\\s*\\()"
+        }
+      ]
+    },
+    "operators": {
+      "patterns": [
+        {
+          "name": "keyword.operator.comparison.rulia",
+          "match": "(>=|<=|==|!=|>|<)"
+        },
+        {
+          "name": "keyword.operator.assignment.rulia",
+          "match": "="
+        }
+      ]
+    },
+    "punctuation": {
+      "patterns": [
+        {
+          "name": "punctuation.section.parens.begin.rulia",
+          "match": "\\("
+        },
+        {
+          "name": "punctuation.section.parens.end.rulia",
+          "match": "\\)"
+        },
+        {
+          "name": "punctuation.section.brackets.begin.rulia",
+          "match": "\\["
+        },
+        {
+          "name": "punctuation.section.brackets.end.rulia",
+          "match": "\\]"
+        },
+        {
+          "name": "punctuation.section.braces.begin.rulia",
+          "match": "\\{"
+        },
+        {
+          "name": "punctuation.section.braces.end.rulia",
+          "match": "\\}"
+        },
+        {
+          "name": "punctuation.separator.comma.rulia",
+          "match": ","
+        },
+        {
+          "name": "punctuation.separator.semicolon.rulia",
+          "match": ";"
+        }
+      ]
+    }
+  }
+}

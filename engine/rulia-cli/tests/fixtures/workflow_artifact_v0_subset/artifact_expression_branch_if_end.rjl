@@ -1,0 +1,1 @@
+Tagged("workflow_artifact_v0", (id="wf.expression_branch_if_end.v0", version="v0", steps=[(op=:assign, path="order.status", value=("\$expr"="if", cond=("\$expr"=">=", left=("\$expr"="state_get", path="order.amount"), right=80), then="open_case", else="wait_docs")), (op=:end)]))

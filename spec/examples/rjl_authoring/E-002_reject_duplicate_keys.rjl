@@ -1,0 +1,7 @@
+# example_id: E-002
+# gates: [parse]
+# th_ids: [TH-005]
+# vector_ids: [V-004]
+# expected_outcome: [REJECT_MAP_DUPLICATE_KEYS]
+
+(name = "Alice", name = "Bob")

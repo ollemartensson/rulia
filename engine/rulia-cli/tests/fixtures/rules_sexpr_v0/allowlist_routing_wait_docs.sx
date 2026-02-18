@@ -1,0 +1,18 @@
+(rules-sexpr-v0
+  (facts
+    (country "case-002" "SE")
+    (doc_status "case-002" "missing_income_proof"))
+  (rules
+    (:- (route wait_docs)
+        (country ?case ?c)
+        (in ?c (set "US" "CA" "SE"))
+        (doc_status ?case "missing_income_proof"))
+    (:- (route open_case)
+        (country ?case ?c)
+        (in ?c (set "US" "CA" "SE"))
+        (doc_status ?case "complete")))
+  (query (route ?r))
+  (routing_policy
+    (route_predicate route)
+    (no_match_policy (default wait_docs))
+    (ambiguous_policy allow_multiple)))

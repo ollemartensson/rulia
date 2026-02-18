@@ -1,0 +1,411 @@
+{
+  "timestamp_utc": "2026-02-11T14:41:29Z",
+  "round": "baseline",
+  "host": {
+    "os": "Darwin",
+    "arch": "arm64",
+    "kernel": "25.3.0",
+    "cpu": "Apple M2 Max"
+  },
+  "toolchain": {
+    "rust": "rustc 1.89.0 (29483883e 2025-08-04)",
+    "julia": "julia version 1.12.2",
+    "java": "openjdk version \"21.0.10\" 2026-01-20 LTS",
+    "gradle": "9.3.1"
+  },
+  "settings": {
+    "runs": 1,
+    "vectors_dir": "/Users/olle/src/rulia/examples/contracts/canon_vectors",
+    "profiles": {
+      "base": {
+        "iterations": 50000,
+        "warmup": 5000
+      },
+      "stress": {
+        "iterations": 5000,
+        "warmup": 500
+      }
+    },
+    "wasm_browser_enabled": true
+  },
+  "results": [
+    {
+      "profile": "base",
+      "language": "java",
+      "runs": [
+        {
+          "language": "java",
+          "profile": "base",
+          "vectors": 3,
+          "iterations": 50000,
+          "ops": 150000,
+          "elapsed_ns": 17385083,
+          "ops_per_sec": 8628086.504,
+          "checksum": "caceec5bcfbdd390"
+        }
+      ],
+      "summary": {
+        "runs": 1,
+        "vectors": 3,
+        "iterations": 50000,
+        "mean_ops_per_sec": 8628086.504,
+        "median_ops_per_sec": 8628086.504,
+        "min_ops_per_sec": 8628086.504,
+        "max_ops_per_sec": 8628086.504,
+        "stddev_ops_per_sec": 0,
+        "mean_elapsed_ms": 17.385083,
+        "median_elapsed_ms": 17.385083
+      },
+      "checksums_unique": [
+        "caceec5bcfbdd390"
+      ]
+    },
+    {
+      "profile": "base",
+      "language": "julia",
+      "runs": [
+        {
+          "profile": "base",
+          "elapsed_ns": 203206417,
+          "iterations": 50000,
+          "checksum": "caceec5bcfbdd390",
+          "ops": 150000,
+          "language": "julia",
+          "vectors": 3,
+          "ops_per_sec": 738165.6653096738
+        }
+      ],
+      "summary": {
+        "runs": 1,
+        "vectors": 3,
+        "iterations": 50000,
+        "mean_ops_per_sec": 738165.6653096738,
+        "median_ops_per_sec": 738165.6653096738,
+        "min_ops_per_sec": 738165.6653096738,
+        "max_ops_per_sec": 738165.6653096738,
+        "stddev_ops_per_sec": 0,
+        "mean_elapsed_ms": 203.206417,
+        "median_elapsed_ms": 203.206417
+      },
+      "checksums_unique": [
+        "caceec5bcfbdd390"
+      ]
+    },
+    {
+      "profile": "base",
+      "language": "rust",
+      "runs": [
+        {
+          "language": "rust",
+          "profile": "base",
+          "vectors": 3,
+          "iterations": 50000,
+          "ops": 150000,
+          "elapsed_ns": 132778208,
+          "ops_per_sec": 1129703.453,
+          "checksum": "caceec5bcfbdd390"
+        }
+      ],
+      "summary": {
+        "runs": 1,
+        "vectors": 3,
+        "iterations": 50000,
+        "mean_ops_per_sec": 1129703.453,
+        "median_ops_per_sec": 1129703.453,
+        "min_ops_per_sec": 1129703.453,
+        "max_ops_per_sec": 1129703.453,
+        "stddev_ops_per_sec": 0,
+        "mean_elapsed_ms": 132.778208,
+        "median_elapsed_ms": 132.778208
+      },
+      "checksums_unique": [
+        "caceec5bcfbdd390"
+      ]
+    },
+    {
+      "profile": "base",
+      "language": "wasm-browser",
+      "runs": [
+        {
+          "language": "wasm-browser",
+          "engine": "chromium",
+          "profile": "base",
+          "vectors": 3,
+          "iterations": 50000,
+          "ops": 150000,
+          "elapsed_ns": 221500000,
+          "ops_per_sec": 677200.903,
+          "checksum": "caceec5bcfbdd390"
+        }
+      ],
+      "summary": {
+        "runs": 1,
+        "vectors": 3,
+        "iterations": 50000,
+        "mean_ops_per_sec": 677200.903,
+        "median_ops_per_sec": 677200.903,
+        "min_ops_per_sec": 677200.903,
+        "max_ops_per_sec": 677200.903,
+        "stddev_ops_per_sec": 0,
+        "mean_elapsed_ms": 221.5,
+        "median_elapsed_ms": 221.5
+      },
+      "checksums_unique": [
+        "caceec5bcfbdd390"
+      ]
+    },
+    {
+      "profile": "stress",
+      "language": "java",
+      "runs": [
+        {
+          "language": "java",
+          "profile": "stress",
+          "vectors": 60,
+          "iterations": 5000,
+          "ops": 300000,
+          "elapsed_ns": 58557375,
+          "ops_per_sec": 5123180.470,
+          "checksum": "16f483da5283a340"
+        }
+      ],
+      "summary": {
+        "runs": 1,
+        "vectors": 60,
+        "iterations": 5000,
+        "mean_ops_per_sec": 5123180.47,
+        "median_ops_per_sec": 5123180.470,
+        "min_ops_per_sec": 5123180.470,
+        "max_ops_per_sec": 5123180.470,
+        "stddev_ops_per_sec": 0,
+        "mean_elapsed_ms": 58.557375,
+        "median_elapsed_ms": 58.557375
+      },
+      "checksums_unique": [
+        "16f483da5283a340"
+      ]
+    },
+    {
+      "profile": "stress",
+      "language": "julia",
+      "runs": [
+        {
+          "profile": "stress",
+          "elapsed_ns": 972681292,
+          "iterations": 5000,
+          "checksum": "16f483da5283a340",
+          "ops": 300000,
+          "language": "julia",
+          "vectors": 60,
+          "ops_per_sec": 308425.79421173857
+        }
+      ],
+      "summary": {
+        "runs": 1,
+        "vectors": 60,
+        "iterations": 5000,
+        "mean_ops_per_sec": 308425.79421173857,
+        "median_ops_per_sec": 308425.79421173857,
+        "min_ops_per_sec": 308425.79421173857,
+        "max_ops_per_sec": 308425.79421173857,
+        "stddev_ops_per_sec": 0,
+        "mean_elapsed_ms": 972.681292,
+        "median_elapsed_ms": 972.681292
+      },
+      "checksums_unique": [
+        "16f483da5283a340"
+      ]
+    },
+    {
+      "profile": "stress",
+      "language": "rust",
+      "runs": [
+        {
+          "language": "rust",
+          "profile": "stress",
+          "vectors": 60,
+          "iterations": 5000,
+          "ops": 300000,
+          "elapsed_ns": 700813291,
+          "ops_per_sec": 428074.073,
+          "checksum": "16f483da5283a340"
+        }
+      ],
+      "summary": {
+        "runs": 1,
+        "vectors": 60,
+        "iterations": 5000,
+        "mean_ops_per_sec": 428074.073,
+        "median_ops_per_sec": 428074.073,
+        "min_ops_per_sec": 428074.073,
+        "max_ops_per_sec": 428074.073,
+        "stddev_ops_per_sec": 0,
+        "mean_elapsed_ms": 700.813291,
+        "median_elapsed_ms": 700.813291
+      },
+      "checksums_unique": [
+        "16f483da5283a340"
+      ]
+    },
+    {
+      "profile": "stress",
+      "language": "wasm-browser",
+      "runs": [
+        {
+          "language": "wasm-browser",
+          "engine": "chromium",
+          "profile": "stress",
+          "vectors": 60,
+          "iterations": 5000,
+          "ops": 300000,
+          "elapsed_ns": 1294800000,
+          "ops_per_sec": 231696.015,
+          "checksum": "16f483da5283a340"
+        }
+      ],
+      "summary": {
+        "runs": 1,
+        "vectors": 60,
+        "iterations": 5000,
+        "mean_ops_per_sec": 231696.015,
+        "median_ops_per_sec": 231696.015,
+        "min_ops_per_sec": 231696.015,
+        "max_ops_per_sec": 231696.015,
+        "stddev_ops_per_sec": 0,
+        "mean_elapsed_ms": 1294.8,
+        "median_elapsed_ms": 1294.8
+      },
+      "checksums_unique": [
+        "16f483da5283a340"
+      ]
+    }
+  ],
+  "checksums": [
+    {
+      "profile": "base",
+      "by_language": {
+        "java": [
+          "caceec5bcfbdd390"
+        ],
+        "julia": [
+          "caceec5bcfbdd390"
+        ],
+        "rust": [
+          "caceec5bcfbdd390"
+        ],
+        "wasm-browser": [
+          "caceec5bcfbdd390"
+        ]
+      },
+      "unique_checksums": [
+        "caceec5bcfbdd390"
+      ],
+      "match": true
+    },
+    {
+      "profile": "stress",
+      "by_language": {
+        "java": [
+          "16f483da5283a340"
+        ],
+        "julia": [
+          "16f483da5283a340"
+        ],
+        "rust": [
+          "16f483da5283a340"
+        ],
+        "wasm-browser": [
+          "16f483da5283a340"
+        ]
+      },
+      "unique_checksums": [
+        "16f483da5283a340"
+      ],
+      "match": true
+    }
+  ],
+  "rankings": [
+    {
+      "profile": "base",
+      "ranking": [
+        {
+          "language": "java",
+          "mean_ops_per_sec": 8628086.504,
+          "median_ops_per_sec": 8628086.504,
+          "mean_elapsed_ms": 17.385083,
+          "stddev_ops_per_sec": 0,
+          "vectors": 3,
+          "iterations": 50000
+        },
+        {
+          "language": "rust",
+          "mean_ops_per_sec": 1129703.453,
+          "median_ops_per_sec": 1129703.453,
+          "mean_elapsed_ms": 132.778208,
+          "stddev_ops_per_sec": 0,
+          "vectors": 3,
+          "iterations": 50000
+        },
+        {
+          "language": "julia",
+          "mean_ops_per_sec": 738165.6653096738,
+          "median_ops_per_sec": 738165.6653096738,
+          "mean_elapsed_ms": 203.206417,
+          "stddev_ops_per_sec": 0,
+          "vectors": 3,
+          "iterations": 50000
+        },
+        {
+          "language": "wasm-browser",
+          "mean_ops_per_sec": 677200.903,
+          "median_ops_per_sec": 677200.903,
+          "mean_elapsed_ms": 221.5,
+          "stddev_ops_per_sec": 0,
+          "vectors": 3,
+          "iterations": 50000
+        }
+      ]
+    },
+    {
+      "profile": "stress",
+      "ranking": [
+        {
+          "language": "java",
+          "mean_ops_per_sec": 5123180.47,
+          "median_ops_per_sec": 5123180.470,
+          "mean_elapsed_ms": 58.557375,
+          "stddev_ops_per_sec": 0,
+          "vectors": 60,
+          "iterations": 5000
+        },
+        {
+          "language": "rust",
+          "mean_ops_per_sec": 428074.073,
+          "median_ops_per_sec": 428074.073,
+          "mean_elapsed_ms": 700.813291,
+          "stddev_ops_per_sec": 0,
+          "vectors": 60,
+          "iterations": 5000
+        },
+        {
+          "language": "julia",
+          "mean_ops_per_sec": 308425.79421173857,
+          "median_ops_per_sec": 308425.79421173857,
+          "mean_elapsed_ms": 972.681292,
+          "stddev_ops_per_sec": 0,
+          "vectors": 60,
+          "iterations": 5000
+        },
+        {
+          "language": "wasm-browser",
+          "mean_ops_per_sec": 231696.015,
+          "median_ops_per_sec": 231696.015,
+          "mean_elapsed_ms": 1294.8,
+          "stddev_ops_per_sec": 0,
+          "vectors": 60,
+          "iterations": 5000
+        }
+      ]
+    }
+  ]
+}

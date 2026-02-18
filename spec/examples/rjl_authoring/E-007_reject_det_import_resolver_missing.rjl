@@ -1,0 +1,7 @@
+# example_id: E-007
+# gates: [deterministic-mode]
+# th_ids: [TH-010]
+# vector_ids: [V-002]
+# expected_outcome: [REJECT_DET_IMPORT_RESOLVER_MISSING]
+
+import "config.rjl"

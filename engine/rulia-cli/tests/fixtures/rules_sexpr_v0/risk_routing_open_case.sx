@@ -1,0 +1,18 @@
+(rules-sexpr-v0
+  (facts
+    (risk_score "case-001" 82)
+    (doc_complete "case-001" true)
+    (doc_complete "case-001" true))
+  (rules
+    (:- (route open_case)
+        (risk_score ?case ?score)
+        (>= ?score 80)
+        (doc_complete ?case true))
+    (:- (route wait_docs)
+        (doc_complete ?case false)))
+  (query
+    (route ?r))
+  (routing_policy
+    (route_predicate route)
+    (no_match_policy (default wait_docs))
+    (ambiguous_policy allow_multiple)))

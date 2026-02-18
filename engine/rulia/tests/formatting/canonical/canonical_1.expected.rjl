@@ -1,0 +1,1 @@
+(active=true, age=30, bytes=0x[deadbeef], doc="Line1\nLine2", dollar="cost: \$5", float=1.0, ints=[1, 2, 3], nested=(alpha=1, beta=2), path="C:\\temp", ref=Ref(:email, "a@example.com"), set=Set([:a, :b, :c]), status=:ok, tag=GeoPoint([12.5, -99.4]))

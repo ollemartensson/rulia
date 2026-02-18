@@ -1,0 +1,34 @@
+{
+  "format_id": "portable_workflow.eval_ir.v0",
+  "ir_version": "v0",
+  "entry_step_id": "S0001",
+  "steps": [
+    {
+      "step_id": "S0001",
+      "kind": "choose_rules_v0",
+      "rules_sexpr": "(rules-sexpr-v0\n  # routing rules authored in sugar form\n  (facts\n    (risk_score \"case-001\" 82)\n    (doc_complete \"case-001\" true))\n  (rules\n    (:- (route open_case)\n        (risk_score ?case ?score)\n        (>= ?score 80)\n        (doc_complete ?case true))\n    (:- (route wait_docs)\n        (doc_complete ?case false)))\n  (query (route ?r))\n  (routing_policy\n    (route_predicate route)\n    (no_match_policy (default wait_docs))\n    (ambiguous_policy allow_multiple)))",
+      "routes": {
+        ":open_case": "S0002",
+        ":wait_docs": "S0003"
+      }
+    },
+    {
+      "step_id": "S0002",
+      "op": "assign",
+      "path": "order.status",
+      "value": "open_case",
+      "next_step_id": "S0004"
+    },
+    {
+      "step_id": "S0003",
+      "op": "assign",
+      "path": "order.status",
+      "value": "wait_docs",
+      "next_step_id": "S0004"
+    },
+    {
+      "step_id": "S0004",
+      "op": "end"
+    }
+  ]
+}

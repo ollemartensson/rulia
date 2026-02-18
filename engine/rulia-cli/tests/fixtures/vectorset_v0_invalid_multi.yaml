@@ -1,0 +1,16 @@
+schema_version: portable_workflow.vectorset.v0.invalid
+format_id: portable_workflow.vectorset.v0
+vectors:
+  - id: BAD-1
+    levels:
+      - L9
+      - L3
+    expected:
+      verdict: maybe
+      failure_codes:
+        - ""
+        - NOT_A_NAMESPACE.code
+      ordering_rule:
+        registry_doc: docs/design/NOT_THE_ENUM_REGISTRY.md
+        section: ""
+        rule_id: ""

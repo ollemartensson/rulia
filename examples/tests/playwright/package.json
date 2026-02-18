@@ -1,0 +1,16 @@
+{
+  "name": "demo-playwright-tests",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "playwright test",
+    "test:watch": "playwright test --ui",
+    "install:browsers": "playwright install chromium"
+  },
+  "devDependencies": {
+    "@types/node": "^24.3.0",
+    "@playwright/test": "^1.56.1",
+    "typescript": "^5.9.3"
+  }
+}

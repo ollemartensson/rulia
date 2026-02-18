@@ -1,0 +1,13 @@
+(rules-sexpr-v0
+  (facts
+    (risk_score "case-006" 91))
+  (rules
+    (:- (route ?r)
+        (risk_score "case-006" ?score)
+        (> ?score 70)))
+  (query
+    (route ?r))
+  (routing_policy
+    (route_predicate route)
+    (no_match_policy error)
+    (ambiguous_policy allow_multiple)))

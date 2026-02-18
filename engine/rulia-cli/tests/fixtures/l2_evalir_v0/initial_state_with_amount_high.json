@@ -1,0 +1,10 @@
+{
+  "order": {
+    "status": "new",
+    "id": "ORD-1000",
+    "amount": 1250
+  },
+  "metrics": {
+    "request_count": 0
+  }
+}

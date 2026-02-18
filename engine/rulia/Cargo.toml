@@ -1,0 +1,36 @@
+[package]
+name = "rulia"
+version.workspace = true
+edition.workspace = true
+rust-version = "1.82"
+license.workspace = true
+repository.workspace = true
+keywords.workspace = true
+categories.workspace = true
+description = "A dual-format data notation with content-addressable binary encoding"
+
+[features]
+default = []
+serde = ["dep:serde", "dep:serde_bytes", "num-bigint/serde", "ordered-float/serde"]
+
+[dependencies]
+thiserror.workspace = true
+num-bigint = "0.4"
+ordered-float = "4"
+num-traits = "0.2"
+sha2.workspace = true
+hex.workspace = true
+blake3.workspace = true
+
+# UUID and ULID generation for @new macro
+uuid = { version = "1", features = ["v4"] }
+ulid = "1"
+
+# Optional serde support
+serde = { workspace = true, optional = true }
+serde_bytes = { workspace = true, optional = true }
+
+[dev-dependencies]
+serde_json = "1"
+criterion.workspace = true
+proptest = "1.5"

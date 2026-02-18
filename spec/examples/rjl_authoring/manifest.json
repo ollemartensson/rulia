@@ -1,0 +1,94 @@
+{
+  "manifest_id": "rjl_authoring_examples",
+  "source_document": "docs/design/RULIA_RJL_AUTHORING_BEST_PRACTICES.md",
+  "authority_allowlist": [
+    "docs/RULIA_OVERVIEW.md",
+    "docs/RULIA_ARCHITECTURE.md",
+    "docs/RULIA_CORE_FORMAT.md",
+    "docs/SPECIFICATION.md"
+  ],
+  "examples_are_authoritative": false,
+  "versioning_policy": "git-history-no-filename-suffixes",
+  "examples": [
+    {
+      "file": "E-001_ok_minimal.rjl",
+      "example_id": "E-001",
+      "gates": ["parse"],
+      "th_ids": [],
+      "vector_ids": [],
+      "expected_outcome": ["OK"]
+    },
+    {
+      "file": "E-002_reject_duplicate_keys.rjl",
+      "example_id": "E-002",
+      "gates": ["parse"],
+      "th_ids": ["TH-005"],
+      "vector_ids": ["V-004"],
+      "expected_outcome": ["REJECT_MAP_DUPLICATE_KEYS"]
+    },
+    {
+      "file": "E-003_ok_encode_canonical_map_order.rjl",
+      "example_id": "E-003",
+      "gates": ["encode"],
+      "th_ids": ["TH-006"],
+      "vector_ids": ["V-006"],
+      "expected_outcome": ["OK"]
+    },
+    {
+      "file": "E-004_ok_encode_canonical_set_order.rjl",
+      "example_id": "E-004",
+      "gates": ["encode"],
+      "th_ids": ["TH-006"],
+      "vector_ids": ["V-007"],
+      "expected_outcome": ["OK"]
+    },
+    {
+      "file": "E-005_reject_fact_not_materialized_new.rjl",
+      "example_id": "E-005",
+      "gates": ["fact-materialization"],
+      "th_ids": ["TH-009"],
+      "vector_ids": ["V-011"],
+      "expected_outcome": ["REJECT_FACT_NOT_MATERIALIZED"]
+    },
+    {
+      "file": "E-006_reject_fact_not_materialized_generator.rjl",
+      "example_id": "E-006",
+      "gates": ["fact-materialization"],
+      "th_ids": ["TH-009"],
+      "vector_ids": ["V-012"],
+      "expected_outcome": ["REJECT_FACT_NOT_MATERIALIZED"]
+    },
+    {
+      "file": "E-007_reject_det_import_resolver_missing.rjl",
+      "example_id": "E-007",
+      "gates": ["deterministic-mode"],
+      "th_ids": ["TH-010"],
+      "vector_ids": ["V-002"],
+      "expected_outcome": ["REJECT_DET_IMPORT_RESOLVER_MISSING"]
+    },
+    {
+      "file": "E-008_reject_det_new_provider_missing.rjl",
+      "example_id": "E-008",
+      "gates": ["deterministic-mode"],
+      "th_ids": ["TH-011"],
+      "vector_ids": ["V-001"],
+      "expected_outcome": ["REJECT_DET_NEW_PROVIDER_MISSING"]
+    },
+    {
+      "file": "E-009_ok_instant_canonical_strict_profile.rjl",
+      "example_id": "E-009",
+      "gates": ["parse", "strict-profile"],
+      "th_ids": ["TH-012"],
+      "vector_ids": ["V-013"],
+      "expected_outcome": ["OK_PARSE", "OK_STRICT_PROFILE"]
+    },
+    {
+      "file": "E-010_reject_instant_noncanonical_strict_profile.rjl",
+      "example_id": "E-010",
+      "gates": ["parse", "strict-profile"],
+      "th_ids": ["TH-012"],
+      "vector_ids": ["V-014"],
+      "expected_outcome": ["OK_PARSE", "REJECT_STRICT_PROFILE_VALIDATION"]
+    }
+  ]
+}

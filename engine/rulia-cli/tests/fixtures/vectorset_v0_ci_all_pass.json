@@ -1,0 +1,191 @@
+{
+  "schema_version": "portable_workflow.vectorset.v0",
+  "format_id": "portable_workflow.vectorset.v0",
+  "vectors": [
+    {
+      "id": "V0-001",
+      "levels": ["L0"],
+      "expected": {
+        "verdict": "pass",
+        "failure_codes": []
+      }
+    },
+    {
+      "id": "V0-003",
+      "levels": ["L0"],
+      "expected": {
+        "verdict": "pass",
+        "failure_codes": []
+      }
+    },
+    {
+      "id": "V0-005",
+      "levels": ["L1"],
+      "inputs": {
+        "bundle": {
+          "path": "bundle_minimal_v0/valid_bundle"
+        }
+      },
+      "expected": {
+        "verdict": "pass",
+        "failure_codes": []
+      }
+    },
+    {
+      "id": "V0-202",
+      "levels": ["L2"],
+      "inputs": {
+        "eval_ir": {
+          "path": "l2_evalir_v0/evalir_request_suspend.json"
+        },
+        "initial_state": {
+          "path": "l2_evalir_v0/initial_state_base.json"
+        },
+        "history": {
+          "path": "l2_evalir_v0/history_prefix_empty.json"
+        },
+        "gamma_core": {
+          "path": "l2_evalir_v0/gamma_core_main.json"
+        }
+      },
+      "expected": {
+        "verdict": "pass",
+        "failure_codes": [],
+        "eval_expected": {
+          "control": "suspend",
+          "emissions": [],
+          "requests": [{}],
+          "obligations": [
+            {
+              "obligation_type": "receipt_valid"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "V0-210",
+      "levels": ["L2"],
+      "scenario_id": "L2-003",
+      "inputs": {
+        "eval_ir": {
+          "path": "l2_evalir_v0/evalir_choose_rules_branch.json"
+        },
+        "initial_state": {
+          "path": "l2_evalir_v0/initial_state_base.json"
+        }
+      },
+      "expected": {
+        "verdict": "pass",
+        "failure_codes": [],
+        "eval_expected": {
+          "control": "end",
+          "state_out": {
+            "order": {
+              "status": "open_case"
+            }
+          },
+          "emissions": [],
+          "requests": [],
+          "obligations": []
+        }
+      }
+    },
+    {
+      "id": "V0-211",
+      "levels": ["L2"],
+      "scenario_id": "L2-004",
+      "inputs": {
+        "eval_ir": {
+          "path": "l2_evalir_v0/evalir_choose_rules_branch_sexpr.json"
+        },
+        "initial_state": {
+          "path": "l2_evalir_v0/initial_state_base.json"
+        }
+      },
+      "expected": {
+        "verdict": "pass",
+        "failure_codes": [],
+        "eval_expected": {
+          "control": "end",
+          "state_out": {
+            "order": {
+              "status": "open_case"
+            }
+          },
+          "emissions": [],
+          "requests": [],
+          "obligations": []
+        }
+      }
+    },
+    {
+      "id": "V0-212",
+      "levels": ["L2"],
+      "scenario_id": "L2-JOIN-001",
+      "inputs": {
+        "eval_ir": {
+          "path": "l2_evalir_v0/evalir_join_any_of_satisfied.json"
+        },
+        "initial_state": {
+          "path": "l2_evalir_v0/initial_state_base.json"
+        },
+        "history": {
+          "path": "l2_evalir_v0/history_prefix_join_one_receipt.json"
+        },
+        "gamma_core": {
+          "path": "l2_evalir_v0/gamma_core_main.json"
+        }
+      },
+      "expected": {
+        "verdict": "pass",
+        "failure_codes": [],
+        "eval_expected": {
+          "control": "end",
+          "state_out": {
+            "order": {
+              "status": "open_case"
+            }
+          },
+          "requests": [],
+          "obligations": []
+        }
+      }
+    },
+    {
+      "id": "V0-301",
+      "levels": ["L3"],
+      "inputs": {
+        "request": {
+          "path": "l3_proof_v0/request.rulia.bin"
+        },
+        "receipt": {
+          "path": "l3_proof_v0/receipt.valid.rulia.bin"
+        },
+        "trust": {
+          "path": "l3_proof_v0/trust/trusted"
+        }
+      },
+      "expected": {
+        "verdict": "pass",
+        "failure_codes": []
+      }
+    },
+    {
+      "id": "V0-401",
+      "levels": ["L4"],
+      "inputs": {
+        "requirements": {
+          "path": "match_cap_v0/pass/requirements.rulia.bin"
+        },
+        "gamma_cap": {
+          "path": "match_cap_v0/pass/gamma_cap.rulia.bin"
+        }
+      },
+      "expected": {
+        "verdict": "pass",
+        "failure_codes": []
+      }
+    }
+  ]
+}

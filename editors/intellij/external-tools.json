@@ -1,0 +1,35 @@
+{
+  "note": "Illustrative example only. JetBrains export/import formats vary by IDE and version.",
+  "tools": [
+    {
+      "name": "Rulia: fmt --check",
+      "program": "rulia",
+      "arguments": "fmt --check $FilePath$",
+      "workingDirectory": "$ProjectFileDir$"
+    },
+    {
+      "name": "Rulia: encode",
+      "program": "rulia",
+      "arguments": "encode $FilePath$",
+      "workingDirectory": "$ProjectFileDir$"
+    },
+    {
+      "name": "Rulia: decode",
+      "program": "rulia",
+      "arguments": "decode $FilePath$",
+      "workingDirectory": "$ProjectFileDir$"
+    },
+    {
+      "name": "Rulia: verify",
+      "program": "rulia",
+      "arguments": "verify $FilePath$",
+      "workingDirectory": "$ProjectFileDir$"
+    },
+    {
+      "name": "Rulia: frame decode",
+      "program": "rulia",
+      "arguments": "frame decode $FilePath$ --out-dir $ProjectFileDir$/rulia-frames",
+      "workingDirectory": "$ProjectFileDir$"
+    }
+  ]
+}

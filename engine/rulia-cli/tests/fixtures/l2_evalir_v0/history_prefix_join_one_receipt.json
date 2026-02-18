@@ -1,0 +1,15 @@
+{
+  "cursor": 0,
+  "items": [
+    {
+      "receipt": {
+        "request_hash": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      }
+    },
+    {
+      "receipt": {
+        "request_hash": "sha256:37ee0616861fec45df675d5024cab86198774a5144e4c741f4641a5d5c9ab609"
+      }
+    }
+  ]
+}

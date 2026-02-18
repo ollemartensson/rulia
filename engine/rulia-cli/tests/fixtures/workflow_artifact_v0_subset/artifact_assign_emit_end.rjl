@@ -1,0 +1,1 @@
+Tagged("workflow_artifact_v0", (id="wf.assign_emit_end.v0", version="v0", steps=[(op=:assign, path="order.status", value="active"), (op=:emit, emission=(kind="audit", event="order_activated")), (op=:end)]))

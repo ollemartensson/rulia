@@ -1,0 +1,10 @@
+{
+  "version": "0.1.0",
+  "artifacts": [
+    {
+      "target": "x86_64-unknown-linux-gnu",
+      "file": "rulia-tools-0.1.0-x86_64-unknown-linux-gnu.tar.gz",
+      "sha256": "2c21462cd6013e96469a94b1fec2c910806a126d1fafe3f42dbd891d1e15c8b9"
+    }
+  ]
+}

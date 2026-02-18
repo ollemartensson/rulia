@@ -1,0 +1,10 @@
+(
+  :profile/id = "demo_capability_profile_v0",
+  :profile/version = 0,
+  :capabilities = [
+    (:id = "crm.update.v0" :provider = "crm-mock"),
+    (:id = "ledger.append.v0" :provider = "audit-ledger"),
+    (:id = "sign.mock.v0" :provider = "signing-mock"),
+    (:id = "pii.reveal.v0" :provider = "pii-vault-mock")
+  ]
+)

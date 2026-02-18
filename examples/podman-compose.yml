@@ -1,0 +1,235 @@
+version: "3.9"
+
+services:
+  redpanda:
+    image: docker.redpanda.com/redpandadata/redpanda:v24.2.11
+    command:
+      - redpanda
+      - start
+      - --overprovisioned
+      - --smp
+      - "1"
+      - --memory
+      - 1G
+      - --reserve-memory
+      - 0M
+      - --check=false
+      - --node-id
+      - "0"
+      - --kafka-addr
+      - PLAINTEXT://0.0.0.0:9092
+      - --advertise-kafka-addr
+      - PLAINTEXT://demo_redpanda_1:9092
+      - --set
+      - redpanda.auto_create_topics_enabled=true
+    ports:
+      - "${REDPANDA_EXTERNAL_PORT:-19092}:9092"
+
+  console:
+    image: docker.redpanda.com/redpandadata/console:v2.7.2
+    depends_on:
+      redpanda:
+        condition: service_started
+    environment:
+      KAFKA_BROKERS: demo_redpanda_1:9092
+      KAFKA_SCHEMAREGISTRY_ENABLED: "false"
+      SERVER_LISTENPORT: "8080"
+    ports:
+      - "${REDPANDA_CONSOLE_PORT:-18082}:8080"
+
+  traefik:
+    image: traefik:v3.1
+    command:
+      - --providers.file.filename=/etc/traefik/dynamic.yml
+      - --providers.file.watch=true
+      - --entrypoints.web.address=:80
+      - --api.dashboard=true
+      - --api.insecure=true
+    ports:
+      - "${TRAEFIK_HTTP_PORT:-8080}:80"
+      - "${TRAEFIK_DASHBOARD_PORT:-8081}:8080"
+    volumes:
+      - ./traefik/dynamic.yml:/etc/traefik/dynamic.yml:ro
+
+  dialog-ui:
+    build:
+      context: ./services/dialog-ui
+    depends_on:
+      traefik:
+        condition: service_started
+
+  sdk-gateway:
+    build:
+      context: ..
+      dockerfile: examples/services/sdk-gateway/Dockerfile
+    environment:
+      HOST: 0.0.0.0
+      PORT: "8080"
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.sdk.rule=PathPrefix(`/sdk`)
+      - traefik.http.routers.sdk.entrypoints=web
+      - traefik.http.services.sdk.loadbalancer.server.port=8080
+
+  workflow-host-julia:
+    build:
+      context: ./services/workflow-host-julia
+    depends_on:
+      redpanda:
+        condition: service_started
+      crm-mock:
+        condition: service_started
+      webhook-mock:
+        condition: service_started
+      signing-mock:
+        condition: service_started
+      audit-ledger:
+        condition: service_started
+      pii-vault-mock:
+        condition: service_started
+      mainframe-mock:
+        condition: service_started
+      sdk-gateway:
+        condition: service_started
+    environment:
+      HOST: 0.0.0.0
+      PORT: "8080"
+      ARTIFACT_DIR: /app/volumes/artifacts
+      BUNDLE_DIR: /app/volumes/bundles
+      WORKFLOW_DIR: /app/workflows/portable
+      EGRESS_FILES_DIR: /app/volumes/egress/files
+      CRM_URL: http://crm-mock:8080
+      WEBHOOK_URL: http://webhook-mock:8080
+      SIGN_URL: http://signing-mock:8080
+      LEDGER_URL: http://audit-ledger:8080
+      PII_VAULT_URL: http://pii-vault-mock:8080
+      MAINFRAME_URL: http://mainframe-mock:8080
+      SDK_GATEWAY_URL: http://sdk-gateway:8080
+    volumes:
+      - ./volumes/artifacts:/app/volumes/artifacts
+      - ./volumes/bundles:/app/volumes/bundles
+      - ./volumes/egress:/app/volumes/egress
+      - ./workflows:/app/workflows:ro
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.workflow.rule=PathPrefix(`/workflow`)
+      - traefik.http.routers.workflow.entrypoints=web
+      - traefik.http.services.workflow.loadbalancer.server.port=8080
+
+  mf-outbox-bridge-julia:
+    build:
+      context: ./services/mf-outbox-bridge-julia
+    depends_on:
+      redpanda:
+        condition: service_started
+      workflow-host-julia:
+        condition: service_started
+    environment:
+      OUTBOX_DIR: /app/volumes/tk4/outbox
+      PROCESSED_DIR: /app/volumes/tk4/processed
+      KAFKA_BROKER: demo_redpanda_1:9092
+      KAFKA_TOPIC: legacy.outbox.v0
+      WORKFLOW_SEED_URL: http://workflow-host-julia:8080/workflow/seed
+      POLL_INTERVAL_SECONDS: "2"
+    volumes:
+      - ./volumes/tk4:/app/volumes/tk4
+
+  crm-mock:
+    build:
+      context: ./services/adapters-julia/crm-mock
+    environment:
+      HOST: 0.0.0.0
+      PORT: "8080"
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.crm.rule=PathPrefix(`/crm`)
+      - traefik.http.routers.crm.entrypoints=web
+      - traefik.http.services.crm.loadbalancer.server.port=8080
+
+  webhook-mock:
+    build:
+      context: ./services/adapters-julia/webhook-mock
+    environment:
+      HOST: 0.0.0.0
+      PORT: "8080"
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.webhook.rule=PathPrefix(`/webhook`)
+      - traefik.http.routers.webhook.entrypoints=web
+      - traefik.http.services.webhook.loadbalancer.server.port=8080
+
+  signing-mock:
+    build:
+      context: ./services/adapters-julia/signing-mock
+    environment:
+      HOST: 0.0.0.0
+      PORT: "8080"
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.sign.rule=PathPrefix(`/sign`)
+      - traefik.http.routers.sign.entrypoints=web
+      - traefik.http.services.sign.loadbalancer.server.port=8080
+
+  mainframe-mock:
+    build:
+      context: ./services/adapters-julia/mainframe-mock
+    environment:
+      HOST: 0.0.0.0
+      PORT: "8080"
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.mainframe.rule=PathPrefix(`/mainframe`)
+      - traefik.http.routers.mainframe.entrypoints=web
+      - traefik.http.services.mainframe.loadbalancer.server.port=8080
+
+  bankid-test:
+    build:
+      context: ./services/adapters-julia/bankid-test
+    environment:
+      HOST: 0.0.0.0
+      PORT: "8080"
+      BANKID_MODE: ${BANKID_MODE:-mock}
+      BANKID_BASE_URL: ${BANKID_BASE_URL:-https://appapi2.test.bankid.com/rp/v6.0}
+      BANKID_PFX_PATH: ${BANKID_PFX_PATH:-/certs/bankid-test.pfx}
+      BANKID_PFX_PASSWORD: ${BANKID_PFX_PASSWORD:-}
+      BANKID_CA_PATH: ${BANKID_CA_PATH:-}
+    volumes:
+      - ${BANKID_CERTS_DIR:-./volumes/certs}:/certs:ro
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.bankid.rule=PathPrefix(`/bankid`)
+      - traefik.http.routers.bankid.entrypoints=web
+      - traefik.http.services.bankid.loadbalancer.server.port=8080
+
+  audit-ledger:
+    build:
+      context: ./services/java-services/audit-ledger
+    environment:
+      PORT: "8080"
+      LEDGER_DIR: /app/data
+    volumes:
+      - ./volumes/artifacts:/app/data
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.ledger.rule=PathPrefix(`/ledger`)
+      - traefik.http.routers.ledger.entrypoints=web
+      - traefik.http.services.ledger.loadbalancer.server.port=8080
+
+  pii-vault-mock:
+    build:
+      context: ./services/adapters-julia/pii-vault-mock
+    environment:
+      HOST: 0.0.0.0
+      PORT: "8080"
+      LEDGER_URL: http://audit-ledger:8080
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.pii.rule=PathPrefix(`/pii`)
+      - traefik.http.routers.pii.entrypoints=web
+      - traefik.http.services.pii.loadbalancer.server.port=8080
+
+  hercules-stub:
+    image: alpine:3.20
+    command: ["/bin/sh", "-lc", "echo 'hercules stub container active'; mkdir -p /outbox; tail -f /dev/null"]
+    volumes:
+      - ./volumes/tk4:/outbox

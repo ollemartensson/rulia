@@ -1,0 +1,23 @@
+{
+  "format_id": "portable_workflow.eval_ir.v0",
+  "ir_version": "v0",
+  "artifact_hash": "sha256:487b5a9a4a7a780371b4bc2952099068a8207fc72e51adea776081771dcf9a79",
+  "entry_step_id": "S0001",
+  "steps": [
+    {
+      "step_id": "S0001",
+      "op": "request",
+      "capability_id": "capability.approvals",
+      "operation": "submit",
+      "args": {
+        "channel": "email",
+        "amount": 1250
+      },
+      "next_step_id": "S0002"
+    },
+    {
+      "step_id": "S0002",
+      "op": "end"
+    }
+  ]
+}

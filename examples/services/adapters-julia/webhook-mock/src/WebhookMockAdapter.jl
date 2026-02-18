@@ -1,0 +1,3 @@
+module WebhookMockAdapter
+
+end

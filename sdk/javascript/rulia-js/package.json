@@ -1,0 +1,21 @@
+{
+  "name": "@rulia/js",
+  "version": "0.1.0",
+  "description": "JavaScript SDK for Rulia (WASM bindings)",
+  "license": "GPL-3.0-only",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "pkg",
+    "README.md"
+  ],
+  "scripts": {
+    "build:wasm": "bash ./scripts/build-wasm.sh",
+    "build": "npm run build:wasm && tsc -p tsconfig.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit"
+  },
+  "devDependencies": {
+    "typescript": "^5.9.3"
+  }
+}

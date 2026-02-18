@@ -1,0 +1,15 @@
+{
+  "schema_version": "portable_workflow.vectorset.v0",
+  "format_id": "portable_workflow.vectorset.v0",
+  "vectorset_id": "portable-workflow-v0-minimal",
+  "vectors": [
+    {
+      "id": "V0-001",
+      "levels": ["L0"],
+      "expected": {
+        "verdict": "pass",
+        "failure_codes": []
+      }
+    }
+  ]
+}

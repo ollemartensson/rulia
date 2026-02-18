@@ -1,0 +1,16 @@
+[package]
+name = "rulia-arrow"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+repository.workspace = true
+description = "Apache Arrow integration for Rulia data format"
+
+[dependencies]
+rulia = { path = "../rulia" }
+arrow.workspace = true
+arrow-buffer = "57"
+thiserror.workspace = true
+
+[dev-dependencies]
+criterion.workspace = true

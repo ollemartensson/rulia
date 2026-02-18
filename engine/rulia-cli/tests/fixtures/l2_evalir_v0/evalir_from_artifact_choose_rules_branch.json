@@ -1,0 +1,62 @@
+{
+  "format_id": "portable_workflow.eval_ir.v0",
+  "ir_version": "v0",
+  "artifact_hash": "sha256:e59855e400d59ea0979375aec889c86474fe0c53480e00e8b9faa1921f6aa43a",
+  "entry_step_id": "S0001",
+  "steps": [
+    {
+      "step_id": "S0001",
+      "op": "choose_rules_v0",
+      "rules": {
+        "facts": [
+          ["risk_score", "case-001", 82],
+          ["doc_complete", "case-001", true]
+        ],
+        "rules": [
+          {
+            "head": ["route", ":open_case"],
+            "body": [
+              ["risk_score", "?case", "?score"],
+              [">=", "?score", 80],
+              ["doc_complete", "?case", true]
+            ]
+          },
+          {
+            "head": ["route", ":wait_docs"],
+            "body": [
+              ["doc_complete", "?case", false]
+            ]
+          }
+        ],
+        "query": ["route", "?r"],
+        "selection": "canonical-first",
+        "on_no_match": {
+          "default": ":wait_docs"
+        },
+        "on_ambiguous": "choose-first"
+      },
+      "routes": {
+        ":open_case": "S0003",
+        ":wait_docs": "S0002"
+      }
+    },
+    {
+      "step_id": "S0002",
+      "op": "assign",
+      "path": "order.status",
+      "value": "wait_docs",
+      "next_step_id": "S0003"
+    },
+    {
+      "step_id": "S0003",
+      "op": "assign",
+      "path": "order.status",
+      "value": "open_case",
+      "next_step_id": "S0004"
+    },
+    {
+      "step_id": "S0004",
+      "op": "end"
+    }
+  ]
+}
